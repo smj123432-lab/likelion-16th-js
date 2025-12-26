@@ -35,8 +35,36 @@
 true;
 false;
 
+// ----------------------------------------
 // 터미널에 값 출력
+// - 콘솔 (console.log();)
+// 콘솔 ! 기록해줘 (값)
+// - console.log(값);
+// ----------------------------------------
 
-// 주석 한 줄 (single line comment)
+// 숫자(number)
+console.log(9);
+// 문자 (string)
+console.log("자바 스크립트 프로그램");
+console.log("자바 스크립트 프로그램");
+console.log(`자바 스크립트 프로그램`);
+// 논리 (boolean)
+console.log(true);
+console.log(false);
+
+/**
+ * 특별한 주석
+ * jsdoc 사용 시 활용
+ * */
 
 // 주석 여러 줄 (multiple line comments)
+/* 
+여러 줄 
+주석 작성 
+css 주석과 유사
+
+선택자 {
+ 속성: 값;
+ 속성: 값;
+ }
+ */
