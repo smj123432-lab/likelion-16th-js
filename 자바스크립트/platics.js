@@ -86,10 +86,10 @@ console.log("screen_height = ", screen_height);
 const 상수 = "고정된 값";
 
 // 상수 = "고정된 값";
-// console.log(상수);
+console.log(상수);
 
 // 상수 = "변하는 값";
-// console.log(상수);
+console.log(상수);
 
 // 상수는 재할당 불가능
 // ❌ 에러 발생! TypeError: Assignment to constant variable.
