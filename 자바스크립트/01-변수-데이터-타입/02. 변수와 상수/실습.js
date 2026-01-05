@@ -155,18 +155,34 @@ let SuperMario;
 // 사용자 정보 관리
 // --------------------------------------------------------------------------
 
-// 사용자 기본 정보 (let 사용 - 변경 가능)
-// * 이름
-// * 나이
-// * 이메일
+{
+  // 사용자 기본 정보 (let 사용 - 변경 가능)
+  // * 사용자 이름
+  let userName = "야무";
+  // * 사용자 나이
+  let userAge = 89;
+  // * 사용자 이메일
+  let userEmail = "yamoo9@naver.com";
 
-// 정보 업데이트
+  console.log("변경 전:", userName, userAge, userEmail);
 
+  // 정보 업데이트
+  userName = "지훈";
+  userAge = 20;
+  userEmail = "yamoog@gmail.com";
+
+  console.log("변경 후:", userName, userAge, userEmail);
+}
 // 시스템 설정 (const 사용 - 변경 불가)
 // * 시스템 이름
+const SYSTEM_NAME = "macOS";
 // * 시스템 버전
+const SYSTEM_VERSION = "15.6.2";
 // * 최대 로그인 시도 횟수
+// const 최대_로그인_시도_회수 = 5
+const MAX_LOGIN_ATTEMPTS = 5;
 // * 세션 타임아웃
+const SESSION_TIMEOUT = 3000;
 
 // --------------------------------------------------------------------------
 // 쇼핑몰 상품 관리
@@ -174,14 +190,21 @@ let SuperMario;
 
 // 상품 정보 (변경 가능한 변수)
 // * 상품 이름
+let productName = "노트북";
 // * 상품 가격
+let productPrice = 98_000;
 // * 상품 재고
+let productInventory = 102;
 // * 상품 카테고리
+let productCategory = "디지털 기기 / 랩탑";
 
 // 시스템 상수 (변경 불가)
 // * 부가세 10%
+const SURTAX = 0.1;
 // * 무료배송 기준 40,000원
+const SHIPPING_FREE = 40_000;
 // * 최소 주문 금액 10,000원
+const MIN_ORDER_AMOUNT = 10_000;
 
 // --------------------------------------------------------------------------
 // let vs const 선택 가이드
@@ -199,15 +222,26 @@ let SuperMario;
 
 // 문제 1: 학생 정보를 저장하는 변수를 만드세요.
 // - 이름 (변경 가능)
+let name = "saminjae";
 // - 학년 (변경 가능)
+let grade = 3;
 // - 학번 (변경 불가)
+const gradeNumber = 201913029;
 // - 학교 이름 (변경 불가)
+const schoolName = "hanshin";
 
+console.log("student is ", name, grade, gradeNumber, schoolName);
 // 문제 2: 도서관 책 정보를 저장하는 변수를 만드세요.
 // - 책 제목 (변경 불가)
+const bookName = "자바스크립트";
 // - 저자 (변경 불가)
+const authorName = "사민재";
 // - 대출 가능 여부 (변경 가능)
+let isAvailable = true;
 // - 대출 횟수 (변경 가능)
+let loanCount = 3;
+
+console.log("book is ", bookName, authorName, isAvailable, loanCount);
 
 // 문제 3: 온라인 쇼핑몰 장바구니를 만드세요.
 // - 상품명 (변경 불가)
