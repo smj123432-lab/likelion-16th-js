@@ -149,8 +149,16 @@ console.log(memoryStick);
 // --------------------------------------------------------------------------
 
 // 심볼 생성 - 항상 고유한 값
+// const productAIdString = 'abc', 
+// productBIdString = 'abc' 
+// const productAIdSymbol = Symbol('abc'),
+// productBIdSymbol = Symbol('abc')
 
-// 설명이 있는 심볼
+// 고유한 값인가? (조건: productAId와 productBId가 값이 달라야 한다. )
+// 두 값이 같다. true 불리언 평가 (고유하지 않다.)
+// console.log('문자를 사용할 때 고유하지 않다? ', productAIdString == productBIdString);
+// console.log('심볼를 사용할 때 고유하지 않다? ', productAIdSymbol == productBIdSymboll);
+      // 설명이 있는 심볼
 
 // --------------------------------------------------------------------------
 // 빅인트 (BigInt)
@@ -158,13 +166,15 @@ console.log(memoryStick);
 
 // 일반 숫자의 한계
 // * Number.MAX_SAFE_INTEGER
-// * +1 한계 초과
-// * +2 정확하지 않음
+// * +1 한계 초과  9007199254740992
+// * +2 정확하지 않음 9007199254740992
 
 // BigInt 생성 - 숫자 뒤에 n 붙이기
-
+const bigIntLiteral = 1000n
+console.log(bigIntLiteral);
 // BigInt() 사용
-
+const bigInt = BigInt(1000)
+console.log(bigInt);
 // BigInt와 Number는 섞을 수 없음
 // ❌ 숫자와 빅인트를 더할 경우 에러!
 // ✅ 빅인트끼리 더할 경우 가능
