@@ -200,7 +200,7 @@ function 커미_만들기(원두, 물) {
 }
 
 // 기능 사용(실행, 호출)
-커피_만들기('케냐', '뜨거운 물', false)
+// 커피_만들기('케냐', '뜨거운 물', false)
 
 
 
@@ -225,18 +225,38 @@ const 장바구니 = [
 
 // --------------------------------------------------------------------------
 // typeof 연산자
+// 데이터 유형 (type of data)
+// typeof 연산자는 데이터의 타입을 확인할 때 사용
+// * typeof 데이터
+// * typeof (표현식 => 데이터)
+// * typeof ('우리는' + '하나 !')
+// * typeof 데이터(값) 또는 표현식 => 타입(유형) 값 (문자열)
 // --------------------------------------------------------------------------
 
 // 기본 타입
+console.group('기본 타입')
 // * null
+console.log(typeof null);
 // * undefined
+console.log(typeof undefined);
 // * String
+console.log(typeof '사민재');
 // * Number
+console.log(typeof 100);
 // * Boolean
+console.log(typeof false);
 // * BigInt
+console.log(typeof 900n);
 // * Symbol
+console.log(typeof Symbol('id'));
+console.groupEnd()
 
 // 참조 타입
+console.group('객체 타입-------------------');
 // * Object
+console.log(typeof {});
 // * Array
+console.log(typeof []);
 // * Function
+console.log(typeof function () {});
+console.groupEnd();
