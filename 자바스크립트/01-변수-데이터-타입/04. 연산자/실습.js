@@ -343,20 +343,30 @@ console.log('100' < '20');
 
 // 예제: 할인 적용 조건
 let is_member = true
-let purchase_amount = 50000
+let purchase_amount = 24500
 // 멤버이고 구매 금액이 3만원 이상인 경우, 할인 적용
-let has_discount
+// 할인 적용 대상인지 여부를 표현식으로 구현하세요
+// a [멤버(true)] 그리고 (and, &&) b[구매 금액 >= 3e4] -> 참 또는 거짓
+let has_discount = is_member && purchase_amount >= 3e4
+console.log(has_discount);
 
 // 예제: 접근 권한 조건
 let is_admin = false
 let is_owner = true
 // 관리자이거나 주인인 경우, 접근 허용
-let can_access
+let can_access = is_admin || is_owner
+console.log(can_access);
+
 
 // 예제: 신선 유지 온도 조건
-let temperature = 25
+let temperature = 20 //(18 ~ 26)까지는 신선 유지
 // 온도가 18도 이상 26도 이하인 경우, 신선 유지
-let keep_fresh
+// 조건 a 와 조건 b 
+// 온도 a: >= 18 
+// 조건 b: 온도가 <= 26
+// 조건 a 와 조건 b가 합당  (a && b)
+let keep_fresh = 18 <= temperature && 26 >= temperature
+console.log(keep_fresh);
 
 
 // --------------------------------------------------------------------------
@@ -372,6 +382,12 @@ let keep_fresh
 // 주의사항
 // --------------------------------------------------------------------------
 // * 문자열 + 숫자 (문자)
+console.log('5' + 9);
 // * 문자열 - 숫자 (숫자)
+let input3 = '103', input4 = '104'
+
+console.log(input3 - input4);
+console.log(Number(input3) * input4);
+
 // * 문제 해결 방법 (문자 → 숫자 변환 후 연산)
 // * 증가, 감소 연산자 위치 (전/후)
