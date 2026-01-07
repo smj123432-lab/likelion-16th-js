@@ -6,12 +6,27 @@
 // * 함수는 값을 반환(return)할 수 있으며, 값으로 취급됩니다.
 // --------------------------------------------------------------------------
 
+// function
+function 물_길러가(양동이_종류 /* 작은/큰 양동이 */){
+  console.log(양동이_종류 + '를 챙겨요')
+  console.log('마을 북쪽 우물로 이동해요')
+  console.log('우물에서 물을 길러요')
+  console.log('조심스럽게 양동이를 이고 마을로 돌아와요.')
+}
+// 물_길러가() // 기능(funcion, 함수) 호출(call, 실행)
+// 물_길러가(추가_조건)
+물_길러가('작은 양동이') // "세수용 물 길러가는데 와예?"
+
+// '너 어디가? 뭐하러가? '
+// 물_길러가()
+물_길러가('큰 양동이') // "빨래용 물 길러가예"
 
 // --------------------------------------------------------------------------
 // 기본 함수 선언과 호출
 // --------------------------------------------------------------------------
 
 // 함수 선언 (기능 정의)
+// 어떤 기능을 만들고 싶은가?
 
 // 함수 호출 (기능 사용)
 
@@ -55,14 +70,31 @@
 // --------------------------------------------------------------------------
 // 표현식 전달 (평가 순서)
 // --------------------------------------------------------------------------
+// function sum(x, y, z) {
+//   return x + y + z
+// }
+// console.log(sum(4+6, 0.5+10.5,12-2+2) );
 
 // 두 수의 곱(multiply)을 계산해 결과를 반환하는 함수 작성
+function multiply(x, y) {
+  return x * y
+}
+console.log(multiply(2,2));
+console.log(multiply(21,11));
 
 // 함수 호출 안에 다른 함수 호출(표현식)이 있는 경우
 // 설명:
 // 1. multiply(3, 5)가 먼저 평가(실행)되어 10이 됨
 // 2. add(15, 12)이 실행됨
 // 출력 결과: 27
+function add(x, y) {
+  return x+y
+}
+const result1 = add(15, 12)
+const result2 = add(multiply(5,3), 9 + 3)
+console.log(result1) 
+console.log(result2) 
+
 
 
 // --------------------------------------------------------------------------
@@ -82,3 +114,27 @@
 // 1. 매개변수(Parameter)는 '빈 상자(변수)', 인자(Argument)는 '실제 내용물(값)'입니다.
 // 2. `return`을 만나면 함수는 그 즉시 종료되고 값을 반환합니다.
 // 3. 함수에 수식이나 다른 함수를 넣으면, 먼저 계산(평가)된 뒤에 결과값이 전달됩니다.
+
+
+// 실습
+// 1. 함수 선언(호이스팅)
+function logger(logMessage) {
+  console.log(logMessage);
+}
+// 2. 함수 표현식
+const pxToRem = function (pxValue) {
+  return parseInt(pxValue, 10) / 16 + 'rem'
+}
+console.log(pxToRem(24))
+console.log(pxToRem('24px'))
+console.log(pxToRem('2890px'))
+
+// const remToPx = function (remValue) {
+//   return parseFloat(remValue) * 16 + 'px'
+// }
+// console.log(remToPx(1.5));
+
+function remToPx(remValue) {
+  return parseFloat(remValue) * 16 + 'px'
+}
+console.log(remToPx(1.5));
