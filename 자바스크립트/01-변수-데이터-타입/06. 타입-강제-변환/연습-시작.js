@@ -62,21 +62,24 @@ console.log(payment_with_coupon);
 
 // 결제 정보를 문자열로 출력하세요.
 // 출력 결과: '상품 합계: 239000원, 배송비: 3000원, 할인: 24200원, 최종 결제: 217800원'
-let payment_summary = 
+let payment_summary = `상품합계: ${cart_total}원, 배송비: ${SHIPPING_FEE}원, 할인: ${discount_amount}원, 최종 결제: ${final_payment}원 ` 
 console.log(payment_summary);
 // 잘못된 계산 예시 (주의!)
 // PRODUCT_1_PRICE, PRODUCT_1_QUANTITY 덧셈: 문자열 연결이 일어나는 경우 
 // 출력 결과: '350002' (string) - 잘못된 계산!
-let wrong_calculation_1
+let wrong_calculation_1 = PRODUCT_1_PRICE + PRODUCT_1_QUANTITY
+console.log(wrong_calculation_1);
 
 // 올바른 계산 방법
 // 출력 결과: 37000 (number)
-let correct_calculation_1
+let correct_calculation_1 = Number(PRODUCT_1_PRICE) + PRODUCT_1_QUANTITY * 1000
+console.log(correct_calculation_1);
 
 // NaN이 발생하는 경우
 const INVALID_PRICE = 'abc'
 // 출력 결과: NaN (number)
-let invalid_calculation
+let invalid_calculation = Number(INVALID_PRICE) * NaN
+console.log(invalid_calculation);
 
 // NaN 체크하기
 // 출력 결과: true
@@ -98,56 +101,71 @@ const USER_COUPON = undefined   // undefined
 
 // 나이를 숫자로 변환하세요.
 // 출력 결과: 28 (number)
-let age_number
+let age_number = Number(USER_AGE)
+console.log(age_number); 
 
 // 내년 나이를 계산하세요.
 // 출력 결과: 29 (number)
-let next_year_age
+let next_year_age = Number(age_number) + 1
+console.log(next_year_age);
+
 
 // 키를 숫자로 변환하세요.
 // 출력 결과: 175.5 (number)
-let height_number
+let height_number = Number(USER_HEIGHT) 
+console.log(height_number);
+
 
 // 몸무게를 숫자로 변환하세요.
 // 출력 결과: 70 (number)
-let weight_number
+let weight_number = Number(USER_WEIGHT)
+console.log(weight_number);
 
 // BMI를 계산하세요. (몸무게 / (키/100)²)
 // 출력 결과: 약 22.73 (number)
-let bmi
+let bmi = weight_number / (height_number / 100) ** 2
+console.log(parseInt(bmi));
 
 // 회원 여부를 불리언으로 변환하세요.
 // 힌트! 부정(!) 연산자 활용
 // 출력 결과: true (boolean)
-let is_member_boolean
+let is_member_boolean = !!IS_MEMBER
+console.log(is_member_boolean);
 
 // 로그인 횟수를 숫자로 변환하세요.
 // 출력 결과: 0 (number)
-let login_count_number
+let login_count_number = Number(LOGIN_COUNT)
+console.log(login_count_number);
 
 // 로그인 횟수가 0인지 확인하세요.
 // 출력 결과: true (boolean)
-let is_first_login
+let is_first_login = login_count_number === 0
+console.log(is_first_login);
 
 // 포인트를 숫자로 변환하세요. (null → 0)
 // 출력 결과: 0 (number)
-let point_number
+let point_number = Number(USER_POINT)
+console.log(point_number);
 
 // 쿠폰을 숫자로 변환하세요. (undefined → NaN)
 // 출력 결과: NaN (number)
-let coupon_number
+let coupon_number = Number(USER_COUPON)
+console.log(coupon_number);
 
 // 쿠폰이 유효한지 확인하세요.
 // 출력 결과: false (쿠폰이 NaN이므로)
-let is_coupon_valid
+let is_coupon_valid = coupon_number === NaN
+console.log(is_coupon_valid);
 
 // 나이가 성인(20세 이상)인지 확인하세요.
 // 출력 결과: true (boolean)
-let is_adult
+let is_adult = age_number >= 20
+console.log(is_adult);
 
 // 사용자 정보 요약 문자열 만들기
 // 출력 결과: '나이: 28세, 키: 175.5cm, 몸무게: 70kg, 회원: true'
-let user_info_summary
+let user_info_summary = `나이: ${age_number}세, 키: ${height_number}cm, 몸무게: ${weight_number}kg, 회원: ${is_member_boolean}`
+console.log(user_info_summary);
 
 // Falsy 값 테스트
 const TEST_VALUE_1 = '0'  // 문자열 '0'
@@ -158,16 +176,17 @@ const TEST_VALUE_5 = undefined
 
 // Boolean으로 변환했을 때 결과를 예측하세요.
 let test_1_boolean
-// 출력 결과: 
+console.log(!!TEST_VALUE_1);
+// 출력 결과: true
 
 let test_2_boolean
-// 출력 결과: 
+// 출력 결과: false
 
 let test_3_boolean
-// 출력 결과: 
+// 출력 결과: false
 
 let test_4_boolean
-// 출력 결과: 
+// 출력 결과: false
 
 let test_5_boolean
-// 출력 결과: 
+// 출력 결과: false
