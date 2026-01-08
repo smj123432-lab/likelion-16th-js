@@ -146,9 +146,6 @@ const outer = function () {
   // 함수 outer 호출
 outer()
 // 설명: 변수를 찾을 때 현재 범위에 없으면, 점점 더 바깥 범위로 나가며 찾습니다.
-  console.log(garden);
-  console.log(livingRoom);
-  console.log(myRoom);
 // 출력 결과:
 // - 전역 변수: '마당의 꽃'
 // - outer 함수 내부 지역 변수: '거실의 소파'
@@ -162,7 +159,10 @@ outer()
 // 함수 선언보다 호출을 먼저 작성 (sayHello)
 
 // 함수 sayHello 선언 ('안녕! JavaScript 🌼' 출력)
-
+function sayHello() {
+  return '안녕! 자바스크립트'
+}
+console.log(sayHello())
 // 설명: 함수 선언문은 코드 맨 위로 끌어올려지므로, 
 //      선언 전에도 호출이 가능하도록 작동합니다.
 // 출력 결과: '안녕! JavaScript 🌼'
@@ -193,7 +193,11 @@ outer()
 // 함수 표현식 선언 전, sayBye 호출 (ReferenceError 발생)
 
 // const 키워드를 사용해 sayBye 변수에 함수 표현식 할당 ('잘 가! JavaScript 👋' 출력)
-
+console.log(sayBye);
+const sayBye = function () {
+  return '가라! JavaScript'
+}
+console.log(sayBye());
 // 함수 표현식 선언 후 sayBye 호출
 
 // 설명:
