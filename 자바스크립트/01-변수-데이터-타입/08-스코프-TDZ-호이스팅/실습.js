@@ -87,43 +87,68 @@ console.log(표_만들기('HTML로 마크업하기!'))
 // 전역 변수 garden 선언 ('마당의 꽃')
 
 // 블록(block, { ... }) - 지역 생성
-{ 
-  // 블록 내부에서만 사용 가능한 지역 변수
-  // var는 로컬 글로벌 구분이 없음
-  
-  const blockVariable = '블록 내부의 변수'
-  console.log(blockVariable);
-}
+// { 
+//   // 블록 내부에서만 사용 가능한 지역 변수
+//   // var는 로컬 글로벌 구분이 없음
 
-console.log(blockVariable);
+//   const blockVariable = '블록 내부의 변수'
+//   console.log(blockVariable);
+// }
 
+// console.log(blockVariable);
+// -------------------------------------------------
 // 함수 myHouse 선언
-// - 지역 변수 desk 선언 ('책상 위의 노트북')
-// - 전역 변수 garden, 지역 변수 desk 콘솔에 출력
+let garden= '마당의 꽃' 
+// function myHouse() {
+
+  // - 지역 변수 desk 선언 ('책상 위의 노트북')
+  // const desk = '책상 위의 노트북'
+  // - 전역 변수 garden, 지역 변수 desk 콘솔에 출력
+//   console.log('garden: ', garden) ['garden: ','마당의 꽃' ];
+//   console.log('desk: ', desk) ['desk: ','책상 위의 노트북' ];
+// }
+// myHouse()
+
 
 // 전역에서 garden, desk 변수 값 콘솔에 출력
 // - 함수 내부(지역)에서는 외부(전역) 변수에 접근할 수 있습니다.
 // - 외부(전역)에서는 함수 내부(지역) 변수에 접근할 수 없습니다. (ReferenceError)
 
 // garden 출력 결과
-
+// console.log(garden);
 // desk 출력 결과
-
+// console.log(desk);
 
 // --------------------------------------------------------------------------
 // 스코프 체인 (Scope Chain)
 // --------------------------------------------------------------------------
 
 // 함수 outer 선언
-// - 지역 변수 livingRoom 선언 ('거실의 소파')
-// - 내부 함수 inner 선언
-//   - 지역 변수 myRoom 선언 ('내 방의 침대')
-//   - 전역 변수 garden, 상위 함수 변수 livingRoom, 지역 변수 myRoom 출력
-// - 내부 함수 inner 호출
+const outer = function () {  
+  // - 지역 변수 livingRoom 선언 ('거실의 소파')
+  const livingRoom = '거실의 소리'
+  // - 내부 함수 inner 선언
+  const inner = function () {
+    //   - 지역 변수 myRoom 선언 ('내 방의 침대')
+    const myRoom = '내 방의 침대'
+    //   - 전역 변수 garden, 상위 함수 변수 livingRoom, 지역 변수 myRoom 출력
+  console.log(garden);
+  console.log(livingRoom);
+  console.log(myRoom);
+  }
+  // - 내부 함수 inner 호출
+  inner()
+  console.log(garden);
+  console.log(livingRoom);
+  console.log(myRoom);
 
-// 함수 outer 호출
-
+}
+  // 함수 outer 호출
+outer()
 // 설명: 변수를 찾을 때 현재 범위에 없으면, 점점 더 바깥 범위로 나가며 찾습니다.
+  console.log(garden);
+  console.log(livingRoom);
+  console.log(myRoom);
 // 출력 결과:
 // - 전역 변수: '마당의 꽃'
 // - outer 함수 내부 지역 변수: '거실의 소파'
