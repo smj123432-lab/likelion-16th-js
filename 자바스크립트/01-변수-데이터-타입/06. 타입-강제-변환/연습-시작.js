@@ -72,7 +72,6 @@ console.log(wrong_calculation_1);
 
 // 올바른 계산 방법
 // 출력 결과: 37000 (number)
-let correct_calculation_1 = Number(PRODUCT_1_PRICE) + PRODUCT_1_QUANTITY * 1000
 console.log(correct_calculation_1);
 
 // NaN이 발생하는 경우
