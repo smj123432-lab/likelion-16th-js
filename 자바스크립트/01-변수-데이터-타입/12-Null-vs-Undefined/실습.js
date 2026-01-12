@@ -6,6 +6,10 @@
 // * 비교 : == 연산자는 타입 변환 후 비교, === 연산자는 타입까지 엄격히 비교
 // --------------------------------------------------------------------------
 
+// const { use } = require("react");
+
+// const { Profiler } = require("react");
+
 
 // --------------------------------------------------------------------------
 // Undefined - 변수 선언만 하고 값을 할당하지 않은 경우
@@ -56,8 +60,14 @@
 // user 객체 생성
 // name 속성: '이준'
 // age 속성: 20
-
-
+const user = {
+  name: '이준',
+  age: 20,
+}
+console.log(user['name']);
+console.log(user.name);
+const propName = 'age'
+console.log(user[propName])
 // user 객체의 name 속성 출력
 
 
@@ -81,10 +91,11 @@
 // --------------------------------------------------------------------------
 
 // fruits 배열 생성 ['천혜향', '애플망고']
-
+const fruits = ['천해향','애플망고', '샤인머스켓' ]
 
 // fruits 배열의 0번 인덱스 출력
-
+console.log(fruits[0])
+console.log(fruits.at());
 
 // fruits 배열의 1번 인덱스 출력
 
@@ -108,6 +119,10 @@
 // greet 함수 선언
 // 매개변수: name, age
 // 기능: name과 age를 각각 출력
+function greet(name, age) {
+  return name + '는 ' + age + '살이다.'
+}
+console.log(greet('사민재', 26));
 
 
 // greet 함수 호출 ('현정'만 전달, age는 전달하지 않음)
@@ -128,10 +143,16 @@
 // 소드마스터 객체 생성
 // 이름 속성: '요하네스 리히테나워'
 // 무기 속성: null (의도적으로 "무기가 없음"을 표현)
+const 소드마스터 = {
+  이름: '여하네스 리히테나워',
+  무기: null,
+}
+console.log(소드마스터.무기);
+소드마스터.무기 = '츠바이헨더'
 
 
 // 소드마스터 객체의 무기 속성 출력
-
+console.log(소드마스터.무기);
 
 // 소드마스터 객체의 무기 속성을 '츠바이헨더'로 변경
 
@@ -152,18 +173,22 @@
 // --------------------------------------------------------------------------
 
 // currentUser 변수에 null 할당 (아직 로그인하지 않음을 명시)
+let currentUser = null // 로그인 x (시간이 지남에 따라 변하는 데이터)
 
 
 // currentUser 변수 출력
-
+console.log(currentUser);
 
 // 로그인 후 currentUser 변수에 객체 할당
 // name 속성: 'jee'
 // email 속성: 'jee@example.com'
-
+currentUser = {
+  name: 'jee',
+  email: 'jee@example.com',
+}
 
 // currentUser 변수 출력
-
+console.log(currentUser, !!currentUser);
 
 // 설명:
 // null은 "나중에 값이 할당될 것"을 명시적으로 표현할 때 사용합니다.
@@ -178,10 +203,10 @@
 // --------------------------------------------------------------------------
 
 // currentUser 변수를 null로 초기화 (로그아웃)
-
+currentUser = null
 
 // currentUser 변수 출력
-
+console.log(currentUser,!!currentUser);
 
 // 설명:
 // null은 값을 초기화할 때도 사용합니다.
@@ -199,10 +224,20 @@
 // age 속성: 21
 // profileImage 속성: null (프로필 이미지가 없음)
 // bio 속성: null (자기소개가 없음)
+{
+  const user = {
+    name: 'jee',
+    age: 21,
+    ProfileImage: null,
+    bio: null,
+  }
+  console.log(user);
 
-
+user.ProfileImage = 'http://images.pexels.com'
+  user.bio = '멋사 프론트엔드 16기 수강생'
+  console.log(user);
+}
 // user 객체 출력
-
 
 // 설명:
 // null은 데이터베이스에서 "값이 없음"을 명시적으로 표현할 때 사용합니다.
@@ -221,9 +256,42 @@
 //   - users 배열 생성 [{ id: 1, name: '재민' }, { id: 2, name: '상우' }]
 //   - find 메서드로 id가 일치하는 사용자 찾기
 //   - 사용자를 찾으면 해당 객체 반환, 못 찾으면 null 반환
+// findUser 함수 선언
+// 매개변수: id
+// 기능:
+//   - users 배열 생성 [{ id: 1, name: '재민' }, { id: 2, name: '상우' }]
+//   - find 메서드로 id가 일치하는 사용자 찾기
+//   - 사용자를 찾으면 해당 객체 반환, 못 찾으면 null 반환
+const users = [
+  { id: 1, name: '재민' }, 
+  { id: 2, name: '상우' },
+] // users = [user0, user1]
 
+const findUser = (id) => {
+  // 배열도 객체, 객체는 메서드를 가질 수 있다.
+  // 배열의 능력(메서드, method) 중 하나가 "찾는 것(find)"입니다.
+  // 배열.찾는다(id 값이 일치하는 사용자를)
+  // [...].find()
+  // 찾은 사용자 (finded user)
+  const findedUser =  users.find(function(user/* 사용자: id, name */) {
+    // return user.id == id
+    return user.id === Number(id)
+  })
+
+  // 논리 연산자 (조건에 따른 값 반환)
+  return findedUser || null // 값 또는 (표현식 평가 -> 값)
+}
 
 // findUser 함수 호출 (id: 1 전달) 및 결과 출력
+const jaemin = findUser(1)
+const sangwoo = findUser(2)
+
+console.log(findUser(1))
+console.log(jaemin.name);
+console.log(sangwoo.name);
+console.log(sangwoo['id']);
+// findUser 함수 호출 (id: 99 전달) 및 결과 출력
+console.log(findUser(99))
 
 
 // findUser 함수 호출 (id: 99 전달) 및 결과 출력
@@ -242,7 +310,11 @@
 // --------------------------------------------------------------------------
 
 // undefined의 타입 출력 (typeof 연산자 사용)
-
+console.log(null == undefined);
+console.log(!!null == !!undefined);
+console.log(!null == !undefined);
+console.log(null === undefined);
+console.log(!!null === !!undefined);
 
 // null의 타입 출력 (typeof 연산자 사용)
 
@@ -333,8 +405,15 @@
 // 레벨 속성: 1
 // 무기 속성: null (초기에는 무기가 없음)
 // 방어구 속성: null (초기에는 방어구가 없음)
-
-
+const 마법사 = {
+  이름: '멀린',
+  레벨: 99,
+  무기: null,
+  방어구: null,
+}
+console.log(마법사);
+마법사.무기 = '완드'
+console.log(마법사);
 // 캐릭터 객체 출력
 
 
@@ -348,11 +427,20 @@
 // getWeaponName 함수 선언
 // 매개변수: character
 // 기능: character의 무기가 null이면 '무기 없음' 반환, 아니면 무기 이름 반환
-
+function getWeaponName(캐릭터) {
+  return 캐릭터.무기 || '무기 없음'
+}
 
 // getWeaponName 함수 호출 (캐릭터 객체 전달) 및 결과 출력
+console.log(getWeaponName(마법사));
 
-
+const 난쟁이 = {
+  이름: '스머프',
+  레벨: 12,
+  무기: null,
+  방어구: null,
+}
+console.log(getWeaponName(난쟁이));
 // 설명:
 // null을 사용하여 "값이 없음"을 명시적으로 표현하고,
 // 조건문으로 null 여부를 확인하여 적절한 처리를 할 수 있습니다.
@@ -361,3 +449,21 @@
 // { 이름: '전사', 레벨: 1, 무기: null, 방어구: null }
 // { 이름: '전사', 레벨: 1, 무기: '강철 검', 방어구: null }
 // '강철 검'
+
+{
+  // &&, || 조건 처리
+
+  // 표현식(Expression)
+  // - 계산 후, 값을 구하는 과정(평가)
+
+  // 표현식에서의 논리곱(&&, AND) 연산자
+  // - 첫 번째 거짓 같은 값(Falsy)를 찾는 연산자 false를 찾는다.
+  let result1 = 1 && {} && '' && -1 && 10n && [0, 1, 2]
+  console.log(result1)
+
+  // 표현식에서의 논리합(||, OR) 연산자
+  // - 첫 번째 참 같은 값(Truthy)를 찾는 연산자 true를 찾는다.
+  let result2 = 'false' || '' || null || undefined || Symbol()
+  console.log(result2)
+
+}
