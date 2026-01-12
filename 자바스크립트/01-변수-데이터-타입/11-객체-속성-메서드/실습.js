@@ -16,6 +16,46 @@
 // '결제' 속성: '대금을 주고받아 매매 당사자 사이의 거래 관계를 끝맺는 일'
 // '결재' 속성: '결정할 권한이 있는 상관이 부하가 제출한 안건을 검토하여 허가하거나 승인'
 // 객체 출력
+const 국어사전 = {
+  결제: '대금을 주고받아 매매 당사자 사이의 거래 관계를 끝맺는 말',
+  결재: '결정할 권한이 있는 상관이 부하가 제출한 안건을 검토하여 허가하거나 승인'
+}
+
+console.log(국어사전.결제);
+console.log(국어사전.결재);
+
+// 찬미 {이름, 나이, 직업}
+// const 찬미_이름: '찬미'
+// const 찬미_나이: '20'
+// const 찬미_직업: '학생'
+const 찬미 = {
+  이름: '찬미',
+  나이: '20',
+  직업: '학생'
+}
+  const 민재 = {
+    이름: '민재',
+    나이: '26',
+    직업: '학생'
+  }
+const 한결 = {
+  이름: '한결',
+  나이: '20',
+  직업: '학생'
+}
+console.log(찬미.이름);
+console.log(민재.이름);
+console.log(한결.이름, 한결.나이);
+
+// 민재 {이름, 나이, 직업}
+// const 민재_이름: '민재'
+// const 민재_나이: '20'
+// const 민재_직업: '학생'
+
+// 한결 {이름, 나이, 직업}
+// const 한결_이름: '한결'
+// const 한결_나이: '20'
+// const 한걀_직업: '학생'
 
 
 // macbookPro 객체 생성
@@ -23,7 +63,18 @@
 // memory 속성: '64GB 2667 DDR4'
 // macOS 속성: 'Sequoia 15.4'
 // 객체 출력
-
+const macbookPro = {
+  processor: '2.4 GHz 8코어 Intel Core i9',
+  memory: '64GB 2667 DDR4',
+  macOS: 'Sequoia 15.4',
+  playMusic : function (songTitle) {
+    return '지금부터 "' + songTitle + '" 곡을 함께 듣겠습니다.'
+  }
+}
+console.dir(macbookPro.processor);
+console.log(macbookPro.data);
+console.log(macbookPro.playMusic('날아라 슈퍼보드'));
+console.log(macbookPro.processor);
 
 // 설명:
 // 객체는 중괄호 {} 안에 키-값 쌍을 쉼표(,)로 구분하여 작성합니다.
@@ -46,6 +97,17 @@
 // aFunction 속성: function() {} (함수)
 // anArray 속성: [] (빈 배열)
 // 객체 출력
+const obj = {
+  string_속성: '객체는 모든 값을 포함할 수 있습니다.',
+  number_속성: 2025,
+  boolean_속성: true,
+  nestedObj: {
+    x: 10,
+    y: -4
+  },
+  nestedFn: function () { console.log('중첩된 함수 실행됨'); },
+  nestedlist: [null, undefined, Symbol(), 10n]
+}
 
 
 // 설명:
@@ -82,7 +144,8 @@
 
 // macbookPro 객체의 macOS 속성 값을 대괄호 표기법으로 읽어 변수에 저장
 // macOS 변수 출력
-
+let propertyName = 'processor'
+console.log(macbookPro[propertyName]);
 
 // 설명:
 // 대괄호([]) 표기법은 객체['속성_이름'] 형태로 사용합니다.
@@ -197,6 +260,25 @@
 
 // macbookPro 객체에 getMemory 메서드 추가
 // getMemory 메서드는 memory 속성 값을 반환하는 함수
+macbookPro.getMemory = function () {
+  return this.memory
+}
+const 야무 = {
+  이름: '지훈',
+  이름_말하기: function () {
+    return this.이름
+  }
+}
+console.log(야무.이름_말하기());
+
+
+// playMusic : function (songTitle) {
+//     return '지금부터 "' + songTitle + '" 곡을 함께 듣겠습니다.'
+//   }
+
+console.log(macbookPro.playMusic('첫 눈처럼 가겠다'));
+// console.log(macbookPro.getProcessor());
+
 
 
 // macbookPro 객체에 playMusic 메서드 추가
@@ -258,8 +340,14 @@
 
 
 // greeting 함수 호출 (sayHello 함수와 '🌈 자바스크립트' 전달)
-
-
+const greeting = function (helloMessage, name) {
+  return helloMessage() + name
+}
+const sayHello = function () {
+  return '안녕!'
+}
+console.log(sayHello());
+console.log(greeting(sayHello, ' 자바스크립트'));
 // 설명:
 // 함수는 값으로 취급되므로 변수에 할당할 수 있습니다.
 // 함수를 다른 함수의 인자로 전달할 수도 있습니다.
@@ -273,6 +361,17 @@
 // --------------------------------------------------------------------------
 
 // createGreeting 함수 선언
+function createGreeting(message) {
+  const displayMessage = (name) => {
+    return message + name
+  }
+
+  return displayMessage
+  // 리턴으로 값을 내보냄 (근데 함수도 값임)
+  // 함수 내부에 정의된 함수를 밖으로 내보낸다
+}
+const greet = createGreeting('fe 16 수강생 화이팅')
+console.log(greet(' 나와 함께'));
 // 매개변수: message (문자열)
 // 반환: name을 매개변수로 받아 'message + name'을 출력하는 함수
 
@@ -326,3 +425,22 @@
 
 // person 객체 출력
 
+
+
+// 객체의 특징
+// 객체는 키:값 쌍으로 구성된 데이터를 관리하는 구조
+// 객체는 키(key)라고 쓰고 속성(property)이라 읽는다.
+// 객체의 속성에는 모든 JavaScript의 데이터 값을 참조할 수 있다.
+// 객체의 속성에 함수 타입이 설정되면 특별히 "메서드(method)"라 부른다.
+// 객체의 메서드는 결국, 함수이므로 실행 가능하다. (매개변수, 인자도 가능)
+
+// 함수 특징
+// 함수는 이름으로 호출 가능하다.
+// 호출할 때는 실행 연산자 ()를 붙인다.
+// 함수는 매개변수, 인자로 확장(변형) 가능하다.
+// 함수는 선언, 표현식 등으로 정의할 수 있다.
+// 함수는 절차에 따른 코드 블록을 재사용한다.
+
+// 사실, JavaScript의 함수는 "객체"이다.
+// 즉, 함수는 객체의 특징을 가진다.
+// (함수 = 객체)의 속성을 쓰고, 읽고, 수정하고, 삭제할 수 있다.
