@@ -320,7 +320,17 @@ if (lightColor === '빨간색'){
 // 출력 결과:
 // '좌우를 살피고 건널목을 빠르게 건너갑니다.'
 
-
+let userAge = 5
+if (userAge < 7) {
+} else if (userAge >= 7 && userAge < 14) {
+  // 사용자 나이가 7세 이상 14세 미만일 경우
+} else if (userAge >= 14 && userAge < 24) {
+  // 사용자 나이가 14세 이상 24세 미만일 경우
+} else if (userAge >= 24 && userAge < 32) {
+  // 사용자 나이가 24세 이상 32세 미만일 경우
+} else {
+  // 사용자 나이가 32세 이상인 경우
+}
 // --------------------------------------------------------------------------
 // 느슨한 비교가 부른 대참사 - 문제 상황
 // --------------------------------------------------------------------------
@@ -391,6 +401,17 @@ if (lightColor === '빨간색'){
 // 나이에 따른 입장료 계산
 // age 변수에 15 할당
 
+// let age = 15
+
+// if (age < 7) {
+//   console.log('입장료: 무료');
+// } else if (age >= 7 && 19 > age) {
+//   console.log('입장료: 5000원');
+// } else if (age >= 19 && 65 > age) {
+//   console.log('입장료: 10000원');
+// } else {
+//   console.log('입장료: 7000원');
+// }
 
 // if … else if … else 문 작성
 // 조건 1: age가 7 미만인 경우
@@ -401,8 +422,18 @@ if (lightColor === '빨간색'){
 //   - '입장료: 10,000원' 출력
 // 그 외의 경우
 //   - '입장료: 7,000원' 출력
-
-
+function userOld(age) {
+  if (age < 7) {
+    return '1'
+  } else if (age >= 7 && age < 19) {
+    return '2'
+  } else if (age >= 19 && age < 65) {
+    return '3'
+  } else {
+    return '4'
+  }
+}
+console.log(userOld(45));
 // 설명:
 // 여러 조건을 순차적으로 검사하여 나이에 따른 입장료를 계산합니다.
 
@@ -423,7 +454,20 @@ if (lightColor === '빨간색'){
 //   - '가디건이나 자켓을 챙기세요.' 출력
 // 그 외의 경우
 //   - '두꺼운 외투를 입으세요.' 출력
-
+function weather(temperature) {
+  if (temperature >= 28) {
+    return '반팔과 반바지를 입으세요'
+  } else if (temperature >= 20 && temperature < 28) {
+    // 20 이상 28 미만
+    return '긴팔 티셔츠를 입으세요' 
+  } else if (temperature >= 10 && temperature < 20) {
+    // 10 이상 20 미만
+    return '가디건이나 자켓을 챙기세요'
+  } else {
+    return '두꺼운 외투를 입으세요'
+  }
+}
+console.log(weather(25));
 
 // 설명:
 // 온도에 따라 적절한 옷차림을 추천합니다.
@@ -444,8 +488,22 @@ if (lightColor === '빨간색'){
 //   - '[username]님, 환영합니다!' 출력
 // 그 외의 경우
 //   - '로그인이 필요합니다.' 출력
+let username = null
+let isLoggedIn = false
+if (isLoggedIn === true && username !== null) {
+  console.log('[username]님, 환영합니다!');
+} else {
+  console.log('로그인이 필요합니다.');
+}
 
-
+const login = function (isLoggedIn, username) {
+  if (isLoggedIn === true && username !== null) {
+    return '[username]님, 환영합니다!';
+  } else {
+    return '로그인이 필요합니다.';
+  }
+}
+console.log(login(true, 0));
 // 설명:
 // 엄격한 비교(===)를 사용하여 로그인 상태를 정확히 확인합니다.
 
