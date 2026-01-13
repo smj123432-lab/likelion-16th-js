@@ -17,15 +17,15 @@
 // --------------------------------------------------------------------------
 
 // 1. 최상위 객체인 window를 콘솔에 출력하세요.
-console.log(window);
+// console.log(window);
 
 // 2. window 객체의 navigator 속성을 통해 브라우저 정보를 출력하세요. (점 표기법 사용)
-console.log(window.navigator.userAgent); // navigator {}
-console.log(window['location']); // location {} []대괄호 표기법
-console.log(window['navigator']['userAgent']); // location {} []대괄호 표기법
+// console.log(window.navigator.userAgent); // navigator {}
+// console.log(window['location']); // location {} []대괄호 표기법
+// console.log(window['navigator']['userAgent']); // location {} []대괄호 표기법
 
 // 3. 위와 동일한 정보를 window를 생략하고 출력해 보세요. (전역 객체의 특징)
-console.log(location);
+// console.log(location);
 
 // 설명:
 // window 객체는 BOM의 뿌리(root)이자 JavaScript 전역 객체입니다.
@@ -38,13 +38,20 @@ console.log(location);
 
 // 1. 사용자에게 '유튜브 페이지로 이동할까요?'라고 묻는 
 //    확인창을 띄우고 결과를 변수 `userConfirm`에 담으세요.
+// console.log(window.confirm('유튜브 페이지로 이동할까?'));
 
+// const moveToYoube = window.confirm('유튜브로 가?')
 
 // 2. 조건문을 작성하세요.
 //    - [참일 때]: '네. 유튜브 페이지로 이동할게요!' 경고창(alert)을 띄우고,
 //      `window.location.href`를 'https://www.youtube.com'으로 변경하세요.
 //    - [거짓일 때]: '페이지 이동을 취소했어요.' 경고창을 띄우세요.
-
+// if (moveToYoube) {
+//   window.alert('ㅇㅋ 감');
+//   window.location.href = 'http://www.youtube.com'
+// } else {
+//   window.alert('ㅋㅋ 구라임 안감');
+// }
 
 // 설명:
 // confirm()은 확인 시 true, 취소 시 false를 반환합니다.
@@ -56,13 +63,14 @@ console.log(location);
 // --------------------------------------------------------------------------
 
 // 1. 현재 로드된 문서를 나타내는 document 객체를 콘솔에 출력하세요.
-
+console.dir(window.document);
+console.log(document);
 
 // 2. document 객체를 객체 내부 구조(속성 등)까지 포함하여 자세히(dir) 출력하세요.
 
 
 // 3. document 객체와 window.document 객체가 동일한지 비교(===)한 결과를 출력하세요.
-
+console.log(window.document === document);
 
 // 설명:
 // document는 실제 HTML 문서를 JavaScript 객체로 모델링(modeling)한 것입니다.
@@ -99,7 +107,7 @@ console.log(location);
 
 // 1. 현재 페이지의 제목(title)을 가져와 '현재 페이지 제목' 문구와 함께 출력하세요.
 
-
+console.log('현재 주소: ', window.document.title); 
 // 2. 현재 문서의 전체 URL 주소를 출력하세요.
 
 
@@ -107,7 +115,7 @@ console.log(location);
 
 
 // 4. [수정] 브라우저 상단 탭의 제목(title)을 '학습 중인 새로운 제목'으로 변경해 보세요.
-
+document.title = '멋사 16 자바스크립트 학습!'
 
 // 설명:
 // DOM 객체의 속성에 새로운 값을 할당하면 실제 브라우저의 렌더링 상태가 즉시 변경됩니다.
