@@ -7,6 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/fonts.css" />
     <link rel="stylesheet" href="./assets/styles.css" />
+    <style>
+      body {
+        background-color: #fff;
+        &.is-clicked {
+          background-color: #000;
+        }
+      }
+
+      button {
+        background-color: #000;
+        color: #fff;
+        margin-block: 4px;
+        border: 0;
+        padding: 0.3rem 0.9em;
+        border-radius: 3px;
+        &.is-clicked {
+          background-color: #fff;
+          color: #000
+        }
+      }
+    </style>
+  <script src="./learn.js" defer></script>
   </head>
 
   <body>
@@ -24,7 +46,14 @@
         </section>
         <section>
           <h2>레거시 이벤트 모델</h2>
-          <button type="button">레거시 알람</button>
+          <button type="button" onclick="handleClick()">레거시 알람</button>
+          <script>
+            // 레거시 이벤트 모델 방식
+            // 오늘날 잘 사용되지 않지만, 과거 시대의 코드를 통해 확인 가능
+            function handleClick() {
+              alert('버튼이 클릭됐어요!')
+            }
+          </script>
         </section>
       </article>
     </main>
