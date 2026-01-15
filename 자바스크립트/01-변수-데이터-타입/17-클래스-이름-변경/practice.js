@@ -15,3 +15,39 @@ if (itemAdd.classList.contains(activeClassName)) methodName = 'remove'
 // console.log('methodName =', methodName)
 
 itemAdd.classList[methodName](activeClassName)
+
+
+const itemMultiple = practice.querySelector('.item-multiple')
+console.log(itemMultiple);
+
+itemMultiple.classList.add(
+  'bg-yellow-100', 
+  'text-green-500', 
+  'font-semibold'
+)
+
+// 4. 교체 해보셈 
+const itemReplace = practice.querySelector('.item-replace')
+itemReplace.classList.replace('text-red-500', 'text-green-500')
+
+function replaceElementClasses(targetElement, removeClass, ...addClasses) {
+  targetElement.classList.remove(removeClass)
+  targetElement.classList.add(...addClasses)
+}
+
+replaceElementClasses(
+  itemReplace, 
+  'text-red-500', 
+  'text-purple-500', 'font-bold', 'text-lg'
+)
+
+// 5. 없는 클래스를 다른 클래스로 바꿀때? 
+ 
+const itemSafeReplace = practice.querySelector('.item-safe-replace')
+
+const result = itemSafeReplace.classList.replace('unkown-class', 'text-blue-500')
+
+if (!result) {
+  console.warn('요소에 없는 클래스 이름임요');
+}
+
