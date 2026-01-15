@@ -60,7 +60,16 @@ proseHeading.classList.replace('color-silver', 'font-bold') // DOMTokenList{add,
 
 
 // [연습] 'is-danger' 클래스를 'is-success' 클래스로 교체하세요.
+const message = document.querySelector('.message') // 문서 전체, prose.querySelector 은 프로스라는 객체 안에서 찾기
+// message.classList.replace('is-danger', 'is-success')
 
+const replace = message.classList.replace('is-danger', 'is-success')
+console.log('replacement: ', replace);
+if (replace) {
+  console.log('교체 성공');
+} else {
+  console.log('교체 실패');
+}
 
 // 설명:
 // remove()와 add()를 각각 실행하는 것보다 훨씬 간결하고 안전하게 스타일을 전환합니다.
@@ -72,8 +81,25 @@ proseHeading.classList.replace('color-silver', 'font-bold') // DOMTokenList{add,
 
 // [연습] target 요소가 'text-primary' 클래스를 가지고 있는지 조건문(if)으로 확인하세요.
 // 클래스가 있다면 제거하고, 없다면 추가하는 로직을 작성해 보세요.
+const targetElement = prose.querySelector('.target')
 
+// 검토할 클래스 이름을 기억하는 변수
+let checkClassName = 'size-xl'
 
+// target 요소에 text-primary 클래스 값을 가지고 있는 지 확인
+const hasTextPrimaryClass = targetElement.classList.contains(checkClassName)
+// console.log(hasTextPrimaryClass)
+
+// 만약 해당 클래스 이름이 있다면
+if (hasTextPrimaryClass) {
+  // 해당 클래스 이름 제거
+  targetElement.classList.remove(checkClassName)
+}
+// 만약 해당 클래스 이름이 없다면
+else {
+  // 해당 클래스 이름 추가
+  targetElement.classList.add(checkClassName)
+}
 // 설명:
 // 결과값으로 true/false를 반환하므로 복잡한 조건부 로직을 짤 때 필수적입니다.
 
@@ -83,6 +109,24 @@ proseHeading.classList.replace('color-silver', 'font-bold') // DOMTokenList{add,
 // --------------------------------------------------------------------------
 
 // [연습] target 요소에 'active' 클래스를 토글 처리하세요.
+
+// 토글(toggle) => OFF -> ON -> OFF
+
+// 조건문을 사용하는 경우
+// classList.contains, classList.remove, classList.add
+
+let activeClassName = 'active'
+
+const hasActiveClass = targetElement.classList.contains(activeClassName)
+
+if (hasActiveClass) {
+  targetElement.classList.remove(activeClassName)
+} else {
+  targetElement.classList.add(activeClassName)
+}
+
+// 편의를 위한 toggle() 메서드를 사용하는 경우
+targetElement.classList.toggle(activeClassName)
 
 
 // 설명:
