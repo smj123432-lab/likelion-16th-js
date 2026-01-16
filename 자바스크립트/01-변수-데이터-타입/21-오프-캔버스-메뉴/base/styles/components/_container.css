@@ -1,0 +1,30 @@
+.offsite-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -14rem;
+  width: 14rem;
+  background-color: var(--menu-background-color);
+}
+
+.offsite-container-open {
+translate: 14rem 0;
+}
+
+.site-container-open {
+  translate: 14rem 0;
+}
+
+.site-container {
+  padding-top: 3rem;
+  padding-left: 2.5rem;
+  max-width: 43rem;
+}
+
+.openBody {
+  .offsite-container, 
+  .site-container{
+    translate: 14rem 0;
+
+  }
+}

@@ -6,10 +6,10 @@
 // * 비동기(Async): 커피가 나올 때까지 멈추지 않고 다른 일을 처리함
 // --------------------------------------------------------------------------
 
-const body        = document.body,
-      orderButton = document.querySelector('.order-button'),
-      statusText  = document.querySelector('.status'),
-      logList     = document.querySelector('.log-list')
+const body = document.body,
+  orderButton = document.querySelector(".order-button"),
+  statusText = document.querySelector(".status"),
+  logList = document.querySelector(".log-list");
 
 // --------------------------------------------------------------------------
 // 1. 이벤트 리스너와 콜백
@@ -17,16 +17,20 @@ const body        = document.body,
 
 // 클릭 이벤트가 발생했을 때 실행될 "콜백 함수"를 등록합니다.
 // 콜백 함수 : coffeeReadyCallback
-orderButton.addEventListener('click', () => {
-  addLog('점원에게 "따뜻한 라떼"를 주문했습니다.')
-  statusText.textContent = '상태 : 커피 제조 중... (비동기 작업 시작)'
-  
+orderButton.addEventListener("click", () => {
+  console.log('점원에게 "따뜻한 라떼"를 주문했습니다.1');
+  console.log("상태 : 커피 제조 중... (비동기 작업 시작)2");
+
   // 3초 뒤에 커피가 완성된다고 가정
   // setTimeout은 대표적인 비동기 함수입니다.
+  window.setTimeout(() => {
+    console.log("(콜백)메뉴가 준비 되었습니다.3");
+  }, 3000);
 
-  addLog('진동벨을 받고 자리로 돌아와 스마트폰을 봅니다. (차단 방지)')
-})
+  console.log("진동벨을 받고 자리로 돌아와 스마트폰을 봅니다. (차단 방지)4");
+});
 
+// javascript는 싱글 스레드 (한 번에 하나의 일만 수행 가능)
 
 // --------------------------------------------------------------------------
 // 2. 동기(Sync) vs 비동기(Async) 이해하기
@@ -37,20 +41,40 @@ orderButton.addEventListener('click', () => {
 
 // codeBlockingDemo()
 
-
 // --------------------------------------------------------------------------
-// 3. 커스텀 콜백 함수 만들기
+// 3. 커스텀(사용자 정의 함수) 콜백 함수 만들기
 // --------------------------------------------------------------------------
 
 /**
  * 작업을 수행하고 완료되면 콜백을 실행하는 함수
  * @param {Function} callback - 작업 완료 후 실행할 함수
  */
-function completeTask() {
-
-}
+function completeTask() {}
 
 // [연습] completeTask를 호출하면서 익명 콜백 함수를 전달해 보세요.
+function completeTask(callback) {
+  console.log("작업 시작(비동기 처리)");
+  setTimeout(callback, 2000);
+  console.log("작업 완료(비동기 처리 완료)");
+}
+
+completeTask(() => {
+  console.log("비동기 처리된 작업이 모두 마무리 되었습니다.");
+});
+
+// click 커스텀 함수
+// - 이 함수의 요소에 클릭 이벤트 설정
+// - 콜백 함수 전달
+// - 특정 시간 뒤에 작동
+function click(element, callback, timeout) {
+  element.addEventListener("click", () => {
+    setTimeout(callback, timeout);
+  });
+}
+
+click(orderButton, () => {
+  alert("메뉴 주문이 들어왔습니다.")
+}, 3000);
 
 
 // --------------------------------------------------------------------------
@@ -60,27 +84,39 @@ function completeTask() {
 // 2. 콜백은 "나중에 일이 끝나면 알려줘"라고 맡겨놓은 함수입니다.
 // 3. 비동기 처리를 통해 사용자 경험(UX)이 멈추지 않는 매끄러운 웹을 만듭니다.
 
-
-
-
 // --------------------------------------------------------------------------
 
 function addLog(message) {
-  const li = document.createElement('li')
-  const time = new Date().toLocaleTimeString()
-  li.textContent = '[' + time + '] ' + message
-  logList.prepend(li)
+  const li = document.createElement("li");
+  const time = new Date().toLocaleTimeString();
+  li.textContent = "[" + time + "] " + message;
+  logList.prepend(li);
 }
 
 function coffeeReadyCallback() {
-  addLog('🔔 지이잉- 커피가 완성되었습니다! (콜백 실행)')
-  statusText.textContent = '상태 : 주문하신 음료가 나왔습니다.'
-  document.body.style.backgroundColor = 'var(--surface-color)'
+  addLog("🔔 지이잉- 커피가 완성되었습니다! (콜백 실행)");
+  statusText.textContent = "상태 : 주문하신 음료가 나왔습니다.";
+  document.body.style.backgroundColor = "var(--surface-color)";
 }
 
 function codeBlockingDemo() {
-  addLog('로봇이 피자를 기다리느라 멈췄습니다...')
-  const start = Date.now()
+  addLog("로봇이 피자를 기다리느라 멈췄습니다...");
+  const start = Date.now();
   while (Date.now() - start < 5000) {}
-  addLog('5초가 지나서야 다음 일을 할 수 있습니다.')
+  addLog("5초가 지나서야 다음 일을 할 수 있습니다.");
 }
+
+
+// function add(a, b, callback) {
+//   const result = a + b
+//   // callback 함수에 result를 전달해 실행해야 합니다.
+//   // 여기에 코드를 작성하세요.
+//   callback(result)
+// }
+
+// // 2. 콜백 함수로 사용할 printResult 함수입니다.
+// function printResult(value) {
+//   console.log(`결과값은 ${value}입니다.`)
+// }
+
+// add(9,7,printResult)
