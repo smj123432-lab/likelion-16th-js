@@ -13,9 +13,11 @@
 // --------------------------------------------------------------------------
 
 const guestList = ["지율", "상연", "야무", "범쌤"];
+console.log(guestList);
 
 // [퀴즈] '야무' 손님은 몇 번 방에 계실까요?
-
+console.log(guestList.indexOf("야무"));
+console.log(guestList.indexOf("슬비쌤"));
 // --------------------------------------------------------------------------
 // 입구와 끝방 손님 관리 (Push, Pop, Unshift, Shift)
 // --------------------------------------------------------------------------
@@ -32,7 +34,7 @@ const guestList = ["지율", "상연", "야무", "범쌤"];
 // --------------------------------------------------------------------------
 // 공식: splice(시작_인덱스, 제거_개수, 추가_할_항목)
 
-const numbers = [1, 2, 5];
+// const numbers = [1, 2, 5];
 
 // 중간(인덱스 2)에 3, 4를 추가하고 싶다면?
 // console.log('장부 중간 수정 결과:', numbers) // [1, 2, 3, 4, 5]
@@ -66,10 +68,66 @@ console.log("백업 장부:", backupLog);
 // --------------------------------------------------------------------------
 // 린터(Linter) 점검 실습: 아래 코드의 '잠재적 버그'를 예측해보세요.
 // --------------------------------------------------------------------------
-
-const fruits = ["사과", "바나나"];
+// const fruits = ["사과", "바나나"];
 
 // ⚠️ 린터가 'no-unused-vars' 경고를 보낼 수 있습니다.
 // const lastFruit = fruits.pop()
 
 // 만약 pop()을 한 번 더 실행한다면, fruits는 어떤 상태가 될까요?
+const pokemon = ["피카츄", "파이리", "이상해씨", "꼬부기"];
+
+const ThunderPokemon = pokemon.indexOf("피카츄");
+const firePokemon = pokemon.indexOf("파이리");
+const waterPokemon = pokemon.indexOf("거북왕");
+
+console.log(ThunderPokemon, firePokemon, waterPokemon); // 0, 1, -1
+
+// 응용?
+function hasElement(arrayObject, checkItem) {
+  const value = arrayObject.indexOf(checkItem);
+  return value > -1;
+}
+
+// (pokemon,'피카츄') // 0 > -1 -> true
+console.log(hasElement(pokemon, "피카츄"));
+console.log(hasElement(pokemon, "파이리")); // 1 > -1 -> true
+console.log(hasElement(pokemon, "거북왕")); // -1 > -1 -> false
+
+pokemon.unshift("리자몽");
+
+console.log(pokemon);
+
+// const pokemonValue = pokemon.shift("리자몽");
+
+console.log(pokemon);
+const deletedPokemon = pokemon.splice(0, 1, "리자몽");
+console.log(deletedPokemon);
+console.log(pokemon);
+const secondDeletedPokemon = pokemon.splice(0, 2, "리자드", "펄기아");
+console.log(secondDeletedPokemon);
+console.log(pokemon);
+
+const numbers = [1, 2, 5];
+//               0, 1, 2
+
+const lastNumber = numbers.pop();
+console.log(lastNumber);
+numbers.push(3, 4, lastNumber);
+console.log(numbers);
+
+// 배열의 끝에서 [n]개 제거하는 함수(기능) 구현
+// removeItemsFromLast(arrayObject, removeCount)
+// 함수 이름 후보: popMany, dropRight, truncate
+function removeItemsFromLast(arrayObject, removeCount) {
+  // 코드 로직 작성
+  const startIndex = arrayObject.length - removeCount;
+  const removedItems = arrayObject.splice(startIndex, removeCount);
+  return removedItems;
+}
+
+// const popMany = removeItemsFromLast
+// const dropRight = popMany
+
+const removedItems = removeItemsFromLast(numbers, 3);
+console.log(numbers);
+console.log(removedItems); // 삭제된 항목이 포함된 새로운 배열 [2, 3, 4]
