@@ -100,3 +100,48 @@ console.log(allData[10]);
 
 // // ⚠️ 여기서 린터가 'no-const-assign' 경고를 보냅니다.
 // shoppingCart = ['계란', '우유']
+
+// JS 객체 -> 수정 가능, 가변(mutable)
+// JS 기본 값 -> 수정 가능하지 않은, 불변(immutable)
+// 변수 상수 개념으로 접근
+//
+
+const list = ["one", "four"];
+list[9] = "아홉이요~";
+console.log(list);
+console.log(list[list.length]);
+list[list.length] = "zz";
+console.log(list);
+
+list[14] = 1;
+list;
+
+const cart = ["두부", "양파", "김치"];
+cart.length = 0;
+console.log(cart);
+
+cart[0] = 1;
+cart[1] = 2;
+console.log(cart);
+
+const instructors = ["야무", "슬비"];
+instructors[0] = "yamoo";
+instructors[1] = "김데레사";
+console.log(instructors);
+instructors.length = 0;
+console.log(instructors);
+instructors[0] = "yamoo";
+instructors[1] = "김데레사";
+console.log(instructors);
+
+const webTechniques = ["html", "css", "js"];
+webTechniques[0] = "HTML";
+webTechniques[1] = "CSS";
+webTechniques[2] = "JS";
+console.log(webTechniques);
+webTechniques.length = 0;
+webTechniques[webTechniques.length] = "마크업";
+webTechniques[webTechniques.length] = "꾸미기";
+webTechniques[webTechniques.length] = "동적인 기능";
+
+console.log(webTechniques);
