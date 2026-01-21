@@ -131,3 +131,17 @@ function removeItemsFromLast(arrayObject, removeCount) {
 const removedItems = removeItemsFromLast(numbers, 3);
 console.log(numbers);
 console.log(removedItems); // 삭제된 항목이 포함된 새로운 배열 [2, 3, 4]
+
+const people = ["세종대왕", "이순신", "김구", "유관순", "장영실", "신사임당"];
+
+console.log(people.includes("이순신"));
+console.log(people.indexOf("이순신"));
+
+people.unshift("정약용");
+people.splice(0, 0, "지석영");
+people.splice(people.length, 0, "김유신", "을지문덕");
+// const firstdeleted = people.shift()
+// const secondDeleted = people.shift()
+people.splice(0, 4);
+people.splice(people.length - 4, 4);
+console.log(people);
