@@ -15,19 +15,19 @@ console.groupCollapsed("1. 기본 스타일 설정 (CamelCase)");
 const box = document.querySelector(".box");
 const changeStyleButton = document.querySelector(".change-style-button");
 
-changeStyleButton.addEventListener("click", () => {
-  // 박스(Box) 요소에 스타일링 조작(설정)
-  box.style.color = "#fff";
+// changeStyleButton.addEventListener("click", () => {
+//   // 박스(Box) 요소에 스타일링 조작(설정)
+//   box.style.color = "#fff";
 
-  // CSS 속성 이름을 카멜케이스로 변경
-  box.style.backgroundColor = "#ed4c67";
+//   // CSS 속성 이름을 카멜케이스로 변경
+//   box.style.backgroundColor = "#ed4c67";
 
-  // CSS 속성 이름을 그대로 사용 + 대괄호 표기법
-  box.style["background-color"] = "#ed4c67";
+//   // CSS 속성 이름을 그대로 사용 + 대괄호 표기법
+//   box.style["background-color"] = "#ed4c67";
 
-  box.style.width = 142 + "px";
-  // 이게 더 편리함 권장 유지보수에 용이 concatenation
-});
+//   box.style.width = 142 + "px";
+//   // 이게 더 편리함 권장 유지보수에 용이 concatenation
+// });
 
 // [실습] 사용자 정의 속성 설정 (setProperty 활용)
 // 1. '.change-theme-button' 버튼과 '.themed-box' 요소를 선택하세요.
@@ -35,7 +35,67 @@ changeStyleButton.addEventListener("click", () => {
 console.groupCollapsed("2. 사용자 정의 속성 설정 (Hyphen-case)");
 
 // 이곳에 코드를 작성하세요.
+console.dir(box.style); // CSSStyleDeclaration { setProperty }
 
+changeStyleButton.addEventListener("click", () => {
+  // // box.style.color = '#fff'
+  // box.style.setProperty("color", "#fff");
+  // // box.style.backgroundColor = '#ed4c67'
+  // box.style.setProperty("background-color", "#ed4c67");
+  // // box.style.width = 142 + 'px'
+  // box.style.setProperty("width", 142 + "px");
+  // box.style.height = 150 + "px";
+
+  // CSS 변수(커스텀 속성) style 속성으로 설정한다면?
+  // --border-color, --width, --height 변수 값을 변경
+  // box.style.--border-color = 'red'
+  // box.style['--border-color'] = 'red'
+  // box.style.setProperty("--border-color", "red");
+
+  console.log(box.style.cssText);
+
+  // 요소를 한 번에 바꾸자
+  box.style.cssText = `
+  color: #fff;
+  background-color: #0752de;
+  width: calc(100vw - 20px);
+  height: 300px;
+  `;
+  // 요소에 인라인 스타일 값을 한 번에 쓰기 가능
+});
+
+const themeBox = document.querySelector(".themed-box");
+const changeThemeButton = document.querySelector(".change-theme-button");
+
+changeThemeButton.addEventListener("click", () => {
+  themeBox.style.setProperty("--theme-color", "#ed4c67");
+});
+
+// 3번
+{
+  const button50 = document.getElementById("button-50");
+  const button100 = document.getElementById("button-100");
+  const progressBar = document.querySelector(".progress-bar");
+
+  // 1. `id`가 `button-50`인 버튼을 클릭하면
+  //     - `.progress-bar`의 너비를 `'50%'`로 설정합니다.
+  //     - `.progress-bar`의 텍스트 내용을 `'50%'`로 변경합니다.
+  button50.addEventListener("click", () => {
+    const nextValue = 50 + "%";
+    progressBar.style.width = nextValue;
+    progressBar.textContent = nextValue;
+  });
+
+  // 2. `id`가 `button-100`인 버튼을 클릭하면
+  //     - `.progress-bar`의 너비를 `'100%'`로 설정합니다.
+  //     - `.progress-bar`의 텍스트 내용을 `'완료!'`로 변경합니다.
+  //     - 배경색을 파란색(`#2196f3`)으로 변경해봅니다.
+  button100.addEventListener("click", () => {
+    const nextValue = 100 + "%";
+    progressBar.style.width = nextValue;
+    progressBar.textContent = nextValue;
+  });
+}
 console.groupEnd();
 
 // [실습] 실무 패턴: 진행률 바(Progress Bar) 제어

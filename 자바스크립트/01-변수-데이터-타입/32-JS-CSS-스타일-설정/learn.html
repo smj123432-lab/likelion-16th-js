@@ -6,18 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <style>
+      :root {
+        --theme-color: #0652dd;
+      }
+
       .box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        inline-size: 320px;
-        block-size: 142px;
-        margin-block: 20px;
-        border: 6px solid currentColor;
-        border-radius: 12px;
-        font-size: 1.27rem;
-        font-weight: 600;
-        transition: all 0.4s ease-in-out;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        transition: all 0.3s;
+      }
+      .themed-box {
+        background-color: var(--theme-color);
+        color: #fff;
+        padding: 20px;
+        transition: background-color 0.3s;
+      }
+
+      .progress-container {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .progress-bar {
+        width: 10%; /* 초기값 */
+        height: 30px;
+        background-color: #4caf50;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        transition: width 0.5s ease;
       }
     </style>
     <script src="./learn.js" defer></script>
@@ -25,11 +48,29 @@
 
   <body>
     <main class="prose">
-      <button type="button" class="change-style-button">
-        요소 스타일 조작
-      </button>
+      <p
+        class="box"
+        style="border: 6px solid gold"
+        title="이 텍스트의 스타일이 바뀔 거예요!"
+      >
+        BOX
+      </p>
+      <button type="button" class="change-style-button">스타일 변경</button>
+
+      <div class="themed-box">CSS 변수로 배경색을 설정했어요!</div>
+      <button type="button" class="change-theme-button">색상 변경</button>
 
       <div class="box">박스(BOX)</div>
+
+      <h3>파일 다운로드 진행률</h3>
+
+      <div class="progress-container">
+        <div class="progress-bar">10%</div>
+      </div>
+
+      <button type="button" id="button-50">50% 설정</button>
+      <button type="button" id="button-100">100% 설정</button>
+
       <article>
         <header>
           <h1>인테리어 전문가의 도구: style 속성 제어하기</h1>
