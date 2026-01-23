@@ -177,3 +177,21 @@ const findMax = function(num1, num2){
 }
 
 console.log(findMax(10,20));
+
+// 8 학점 계산기
+const getGrade = function(number){
+  if(number >= 90){
+    return 'A'
+  }else if(
+    number >= 80
+  ){ 
+    return 'B'
+  }else if(
+    number >= 70
+  ){
+    return 'C'
+  }else{
+    return 'F'
+  }
+}
+console.log(number(80));
