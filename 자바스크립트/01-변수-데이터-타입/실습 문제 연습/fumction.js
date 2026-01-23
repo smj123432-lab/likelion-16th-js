@@ -63,3 +63,117 @@ function findUser(list, name) {
 
 findUser(users, "민재"); // "찾았다!"
 findUser(users, "호날두"); // "없다..."
+
+
+
+// 1 / 22
+
+// 1번
+function makeIntro(name, age){
+  const result = '제 이름은 ' + name + '이고, 나이는 ' + age + '살 입니다.' 
+ return result
+}
+const myIntro = makeIntro("신주하", 23);
+console.log(myIntro);
+
+// 2번
+const checkDiscount = function(age) {
+  if (age >= 65 || age < 19) {
+    return true
+  } else {
+    return false
+  }
+}
+
+
+console.log(checkDiscount(70)); // true
+console.log(checkDiscount(30)); // false
+console.log(checkDiscount(15)); // true
+
+// 3번
+const double = (num) => num * 2;
+
+console.log(double(3));
+
+// 4번
+// const box = document.querySelector(".box");
+
+// // 1. 함수 정의하기 (기능 만들기)
+// function toggleBox(el) {
+//   // 여기에 코드를 작성하세요 (힌트: el.classList...)
+//   el.classList.toggle('active')
+// }
+
+// // 2. 이벤트 연결하기 (사용하기)
+// box.addEventListener("click", () => {
+//   // 여기서 위에서 만든 함수를 실행하세요.
+//   // 인자로 box를 넘겨줘야 합니다.
+//   console.log(toggleBox);
+// });
+
+// 1
+const add = function(x , y) {
+  const plus = x + y
+  return plus
+}
+console.log(add(2,3));
+
+// 2
+const getLength = function (message) {
+  return message.length
+}
+
+console.log(getLength('안녕하세요'));
+
+
+// 3
+const square = function(number){
+  return number**2
+}
+console.log(square(4));
+
+// 4
+// function sayHello(name) {
+//   return "Hello, " + name;
+// }
+
+const sayHello = (name) => "Hello, " + name
+
+console.log(sayHello('사민재'));
+
+// 5
+const isEven = function(number) {
+  if ( number % 2 === 0){
+    return true
+  } else{
+    return false
+  }
+}
+
+console.log(isEven(4));
+console.log(isEven(7));
+
+// 6
+const checkAdult = function(age){
+  if (age >= 20){
+    return '성인'
+  } else {
+    return '미성년자'
+  }
+}
+console.log(checkAdult(25));
+
+// 7
+const findMax = function(num1, num2){
+  if (num1 > num2){
+    return num1
+  } else if(
+    num2 > num1
+  ){
+    return num2
+  }else{
+    return "뭘 봐"
+  }
+}
+
+console.log(findMax(10,20));
