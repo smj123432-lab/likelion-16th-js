@@ -5,7 +5,6 @@ function multiply(a, b) {
 }
 console.log(multiply(10, 5)); // 결과: 50
 
-
 function getGrade(score) {
   if (score >= 90) {
     return "A";
@@ -17,23 +16,18 @@ function getGrade(score) {
 }
 console.log(getGrade(80));
 
-
 // 8 학점 계산기
-const getScore = function(score){
-if (score >= 90){
-  return 'A'
-}else if( 
-  score >= 80
-){ 
-return 'B'
-}else if(
-  score >= 70
-){
-  return 'c'
-}else{
-  return 'F'
-}
-}
+const getScore = function (score) {
+  if (score >= 90) {
+    return "A";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score >= 70) {
+    return "c";
+  } else {
+    return "F";
+  }
+};
 console.log(getScore(50));
 
 // const sumUpTo = function(n){
@@ -45,3 +39,15 @@ console.log(getScore(50));
 // }
 // }
 // console.log(sumUpTo(5));
+
+const sumUpTo = function (score) {
+  let i = 1;
+  let total = 0;
+  while (i <= score) {
+    total = total + i;
+    i++;
+  }
+
+  return total;
+};
+console.log(sumUpTo(5));
