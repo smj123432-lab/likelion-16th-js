@@ -5,42 +5,66 @@
 // [실습] 뷰포트 기준 좌표 및 크기 측정
 // 1. 대상 요소(element)의 getBoundingClientRect() 메서드를 호출하고 결과를 변수에 할당하세요.
 // 2. 반환된 객체에서 top, left, width, height 값을 콘솔에 출력하는 로직을 작성하세요.
-console.groupCollapsed('getBoundingClientRect() 기본 측정')
+console.group("getBoundingClientRect() 기본 측정");
 
-// 이곳에 코드를 작성하세요.
+const boxElement = document.querySelector(".box");
+const boundingRectButton = document.querySelector(".get-bounding-client-rect");
 
-console.groupEnd()
+boundingRectButton.addEventListener("click", () => {
+  const boxRect = boxElement.getBoundingClientRect();
+  console.log(boxRect);
+});
 
+// 난수(random inteager)를 반환하는 함수 (추상화)
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// 임의의 위치로 이동
+
+let randomX = getRandomInt(24, 111),
+  randomY = getRandomInt(37, 129);
+console.log("randomX =", randomX);
+console.log("randomY =", randomY);
+
+boxElement.style.cssText =
+  `
+  transform: translateX(` +
+  randomX +
+  `px) translateY(` +
+  randomY +
+  `px);
+  background-color: #fff;
+`;
+
+console.groupEnd();
 
 // [실습] 별칭(Alias) 및 계산된 좌표 확인
 // 1. Rect 객체 내의 x, y 값이 각각 left, top과 동일한지 비교하여 출력하세요.
 // 2. bottom 값이 top + height와 일치하는지 확인하는 로직을 작성하세요.
-console.groupCollapsed('좌표 속성 및 계산 값 검증')
+console.groupCollapsed("좌표 속성 및 계산 값 검증");
 
 // 이곳에 코드를 작성하세요.
 
-console.groupEnd()
-
+console.groupEnd();
 
 // [실습] 스크롤을 고려한 절대 좌표 계산
 // 1. 뷰포트 기준의 top 값에 현재 페이지의 수직 스크롤 양(window.scrollY)을 더하세요.
 // 2. 문서 전체(Document)에서의 절대적인 y축 위치를 구하는 로직을 작성하세요.
-console.groupCollapsed('문서 전체 기준 절대 좌표 계산')
+console.groupCollapsed("문서 전체 기준 절대 좌표 계산");
 
 // 이곳에 코드를 작성하세요.
 
-console.groupEnd()
-
+console.groupEnd();
 
 // [실습] 요소의 가시성 판단 (응용)
 // 1. 요소의 top 값이 0보다 크고, 브라우저 높이(window.innerHeight)보다 작은지 조건문을 작성하세요.
 // 2. 현재 요소가 화면(Viewport) 안에 보이는 상태인지 판별하여 출력하세요.
-console.groupCollapsed('화면 내 요소 가시성 확인')
+console.groupCollapsed("화면 내 요소 가시성 확인");
 
 // 이곳에 코드를 작성하세요.
 
-console.groupEnd()
-
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 핵심 요약!

@@ -7,12 +7,12 @@
 // 2. getAttribute()를 사용하여 요소의 속성 값을 반환하는 로직을 작성하세요.
 console.groupCollapsed("getAttr() 함수 작성");
 
-// 이곳에 코드를 작성하세요.
-console.group("getAttr() 함수 작성");
-
 const prose = document.querySelector(".prose");
 const paragraph = prose.querySelector("p");
 const strong = paragraph.querySelector("strong");
+
+const proseClassAttr = getAttr(prose, "class");
+console.log(proseClassAttr);
 
 const paragraphDataAttr = getAttr(paragraph, "data-has-strong");
 console.log(paragraphDataAttr);
@@ -26,21 +26,18 @@ function getAttr(element, attributeName) {
 
 console.groupEnd();
 
-console.groupEnd();
-
 // [실습] setAttr() 함수
 // 1. 요소, 속성 이름, 속성 값을 인자로 받습니다.
 // 2. 요소의 setAttribute() 메서드를 사용해 값을 설정하세요.
 // 3. 메서드 체이닝이 가능하도록 요소를 반환(return)하세요.
 console.groupCollapsed("setAttr() 함수 작성");
 
-// 이곳에 코드를 작성하세요.
-const setAttr = function (element, attributeName, attributeValue) {
-  element.setAttribute(attributeName, attributeValue);
-};
-
-setAttr(strong, "id", "powerfull");
+setAttr(strong, "id", "powerful");
 setAttr(strong, "data-id", "emphasis element");
+
+function setAttr(element, attributeName, attributeValue) {
+  element.setAttribute(attributeName, attributeValue);
+}
 
 console.groupEnd();
 
@@ -57,9 +54,6 @@ removeAttr(strong, "title");
 function removeAttr(element, attributeName) {
   element.removeAttribute(attributeName);
 }
-
-console.groupEnd();
-// 이곳에 코드를 작성하세요.
 
 console.groupEnd();
 
@@ -86,7 +80,63 @@ setTimeout(() => {
   console.log("prose 요소의 id, data-id 속성 모두 삭제");
 }, 4000);
 
-function attr(element, attributeName, attributeValue) {
+// attr() v1
+// attr(element, attributeName, attributeValue)
+// eslint-disable-next-line no-unused-vars
+function attrV1(element, attributeName, attributeValue) {
+  if (attributeValue === undefined) {
+    return getAttr(element, attributeName);
+  }
+
+  if (attributeValue === null) {
+    return removeAttr(element, attributeName);
+  }
+
+  setAttr(element, attributeName, attributeValue);
+}
+console.log(attrV1(prose, "class", "prose"));
+attr(
+  // element
+  prose.querySelector("header"),
+  // attributes (객체)
+  {
+    id: "my-header",
+    title: "머릿글",
+    "data-target": "main content",
+    "aria-labelledby": "main-heading",
+  },
+);
+
+attr(prose.querySelector("h1"), "id", "main-heading");
+
+// attr() v2
+// 함수 리팩토링 (외부적으로 변경 사항은 없지만, 내부적으로 개선)
+// attr(element, attributeName, attributeValue)
+// attr(element, attributes)
+function attr(element, attributeOrAttributes, attributeValue) {
+  // 두 번째 인자가 객체인지 확인
+  if (
+    // typeof 데이터 값이 null, array, object인 경우만 걸러짐
+    typeof attributeOrAttributes === "object" &&
+    // array, object만 걸러짐
+    attributeOrAttributes &&
+    // object만 걸러짐
+    !Array.isArray(attributeOrAttributes)
+  ) {
+    // [속성 키:값 쌍의 집합(객체)] 명확한 변수명 설정
+    const attributes = attributeOrAttributes;
+    // 객체 속성(key):값(value) 쌍을 반복 (for...in 문)
+    for (const key in attributes) {
+      const value = attributes[key];
+      // 재귀(recursion) 호출 (함수 내부에서 자신(함수)을 다시 호출)
+      // console.log(element, key, value)
+      attr(element, key, value);
+    }
+  }
+
+  // [속성 하나(문자열)] 명확한 변수명 설정
+  const attributeName = attributeOrAttributes;
+
   if (attributeValue === undefined) {
     return getAttr(element, attributeName);
   }
