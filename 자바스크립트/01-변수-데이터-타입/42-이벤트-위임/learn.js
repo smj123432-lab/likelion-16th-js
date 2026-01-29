@@ -2,46 +2,122 @@
 // 실습: 이벤트 위임 (Event Delegation)
 // --------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------
+// 이벤트 위임(버블링)을 사용할 때
+
+const list = document.querySelector(".link-list"); // Element
+
+// Element.addEventListener()
+list.addEventListener("click", handleClosestDemo);
+
+function handleClosestDemo(e) {
+  // 나를 포함해 가장 가까운 조상 요소 찾기
+  const aLinkElement = e.target.closest("a[href]"); // <a> or null
+  if (aLinkElement) {
+    console.log(
+      "이벤트가 발생된 대상은 <a href> 요소 또는 내부의 하위 요소입니다.",
+    );
+    e.preventDefault();
+  }
+}
+
+// 이벤트 발생 대상 매칭 검사
+// eslint-disable-next-line no-unused-vars
+function handleMatchesDemo(e) {
+  // 이벤트 발생 대상
+  const eventTarget = e.target; // Element
+
+  // 이벤트가 발생한 대상(요소)의 노드 이름 출력
+  console.log(eventTarget.nodeName, eventTarget.localName);
+
+  // 이벤트 발생 대상이 a[href] 요소인 경우 매칭 검사
+  // Element.matches(selectors)
+  const isLinkElement = eventTarget.matches("a[href]"); // Boolean 반환
+  // 만약 a[href] 요소가 맞다면?
+  if (isLinkElement) {
+    console.log("이벤트가 발생된 대상은 <a href> 요소입니다.");
+    // 브라우저 기본 작동 방지
+    e.preventDefault();
+  } else {
+    console.log("이벤트가 발생된 대상은 <a href> 요소가 아닙니다.");
+  }
+}
+
+// 이벤트 연결 대상(currentTarget) vs 이벤트 발생 대상(target)
+// eslint-disable-next-line no-unused-vars
+function hadleCompareTargets(e) {
+  // 브라우저 기본 작동 방지
+  e.preventDefault();
+
+  // 현재 이벤트 리스너가 추가된 대상
+  // e.currentTarget
+  const eventCurrentTarget = e.currentTarget;
+  console.log(
+    "현재 이벤트 리스너가 추가된 대상",
+    "e.currentTarget =",
+    eventCurrentTarget, // <ul>
+  );
+
+  // 이벤트 발생한 대상(요소)
+  const eventTarget = e.target;
+  console.log(
+    "이벤트 발생한 대상(요소)",
+    "e.target =",
+    eventTarget, // <ul>, <li>, <a> 중 하나
+  );
+}
+
+// --------------------------------------------------------------------------
+// 이벤트 위임을 사용하지 않을 때
+
+// const links = list.querySelectorAll('[href]')
+
+// for (const link of links) {
+//   link.addEventListener('click', (e) => {
+//     e.preventDefault()
+//     const clickedLink = e.currentTarget
+//     console.log(clickedLink)
+//   })
+// }
+
+// --------------------------------------------------------------------------
+
 // [실습] 기본적인 이벤트 위임 구현
 // 1. 상위 요소인 .link-list에 하나의 클릭 이벤트 리스너만 등록하세요.
 // 2. e.target 속성을 사용하여 실제 클릭된 요소가 무엇인지 콘솔에 찍어보세요.
-console.groupCollapsed('이벤트 위임 기본 동작 확인')
+console.group("이벤트 위임 기본 동작 확인");
 
 // 이곳에 코드를 작성하세요.
 
-console.groupEnd()
-
+console.groupEnd();
 
 // [실습] matches()를 활용한 타겟 검사
 // 1. 클릭된 요소가 정확히 <a> 태그일 때만 동작하도록 조건문을 작성하세요.
 // 2. matches('a')를 활용하여 조건이 충족될 때 e.preventDefault()를 실행하고 로그를 남기세요.
-console.groupCollapsed('matches()를 사용한 타겟 매칭')
+console.groupCollapsed("matches()를 사용한 타겟 매칭");
 
 // 이곳에 코드를 작성하세요.
 
-console.groupEnd()
-
+console.groupEnd();
 
 // [실습] closest()를 활용한 중첩 요소 처리
 // 1. <a> 태그 내부에 <span>이나 <svg>가 있는 경우를 대비하세요.
 // 2. e.target.closest('a')를 사용하여 클릭된 지점에서 가장 가까운 <a> 요소를 찾으세요.
 // 3. 찾은 대상이 존재할 때만 특정 로직이 실행되도록 방어적으로 작성하세요.
-console.groupCollapsed('closest()를 사용한 중첩 구조 해결')
+console.groupCollapsed("closest()를 사용한 중첩 구조 해결");
 
 // 이곳에 코드를 작성하세요.
 
-console.groupEnd()
-
+console.groupEnd();
 
 // [실습] 동적 요소 생성 및 위임 확인 (응용)
 // 1. 자바스크립트로 새로운 <li>와 <a>를 .link-list에 추가해 보세요.
 // 2. 새로 추가된 요소에도 이벤트 리스너를 따로 등록하지 않고 위임된 이벤트가 잘 작동하는지 확인하세요.
-console.groupCollapsed('동적 요소와 이벤트 위임의 이점')
+console.groupCollapsed("동적 요소와 이벤트 위임의 이점");
 
 // 이곳에 코드를 작성하세요.
 
-console.groupEnd()
-
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 핵심 요약!
