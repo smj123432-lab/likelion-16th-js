@@ -6,12 +6,36 @@
 // 1. user 객체를 선언하고 name, email 속성을 담으세요.
 // 2. 구조 분해 할당을 통해 name은 그대로, email은 userEmail이라는 이름으로 할당하세요.
 // 3. 존재하지 않는 nickname 속성을 가져오되, 기본값으로 '익명'을 설정하세요.
-console.groupCollapsed('객체 구조 분해 할당 실습')
+console.groupCollapsed("객체 구조 분해 할당 실습");
 
 // 이곳에 코드를 작성하세요
+const myNotebook = {
+  name: "macbook M4",
+  cpu: "m4",
+  ram: "32GB",
+  ssd: "2TB",
+  maker: "Apple",
+};
 
-console.groupEnd()
+// 객체의 속성 이름을 범위 내 변수로 정의하고
+// 변수에 각 속성에 매칭되는 값을 할당한다면?
+// console.log(myNotebook);
+{
+  const name = myNotebook.name;
+  const cpu = myNotebook.cpu;
+  const ram = myNotebook.ram;
+  const ssd = myNotebook.ssd;
+  const maker = myNotebook.maker;
 
+  console.log(name, cpu, ram, ssd, maker);
+}
+
+{
+  const { name: brand, cpu: processor, ram, ssd, maker } = myNotebook;
+  console.log(brand, processor, ram, ssd, maker);
+}
+
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 실습: 배열 구조 분해 할당 (Array Destructuring)
@@ -21,12 +45,77 @@ console.groupEnd()
 // 1. [x, y, z] 좌표 값을 담은 배열을 생성하세요.
 // 2. 구조 분해 할당을 사용하여 각 좌표를 개별 변수에 담아 출력하세요.
 // 3. 배열에 값이 두 개뿐일 경우를 대비해 세 번째 변수에 기본값 0을 설정하세요.
-console.groupCollapsed('배열 구조 분해 할당 실습')
+console.groupCollapsed("배열 구조 분해 할당 실습");
 
 // 이곳에 코드를 작성하세요
+const points = [92, -24, 0]; // [x y z]
+{
+  const x = points.at(0);
+  const y = points.at(1);
+  const z = points.at(2);
 
-console.groupEnd()
+  console.log(x, y, z);
+}
+{
+  const [x, y, z] = points;
+  console.log(x, y, z);
+}
 
+// 객체 타입을 매개변수로 받는 경우
+function printProduct(product) {
+  // 전통적인 객체.속성 방식으로 값에 접근
+  return `"${product.title}" 제품의 가격은 ${product.price.toLocaleString()}원입니다.`;
+}
+
+// 객체 타입을 매개변수로 받은 경우
+function printProductDA(product) {
+  // 객체 타입 매개변수의 구조를 분해해 지역내 변수로 할당
+  const { title, price } = product; // { title, price }
+  return `"${title}" 제품의 가격은 ${price.toLocaleString()}원입니다.`;
+}
+
+// 객체 타입을 매개변수로 받은 경우
+// 매개변수를 바로(즉시) 구조 분해 할당하여 지역내 변수로 선언
+function printProductDAinParams({ title, price }) {
+  return `"${title}" 제품의 가격은 ${price.toLocaleString()}원입니다.`;
+}
+
+console.log(printProduct({ title: "샘표 진간장", price: 10500 }));
+console.log(printProductDA({ title: "샘표 진간장", price: 10500 }));
+console.log(printProductDAinParams({ title: "샘표 진간장", price: 10500 }));
+
+function printFriendsStep1(friends) {
+  const friend1 = friends.at(0);
+  const friend2 = friends.at(1);
+  const friend3 = friends.at(2);
+  const friend4 = friends.at(3);
+  console.log(friend1);
+  console.log(friend2);
+  console.log(friend3);
+  console.log(friend4);
+}
+
+function printFriendsStep2(friends) {
+  const [friend1, friend2, friend3, friend4] = friends; // [친구이름1, 친구이름2, 친구이름3, 친구이름4]
+
+  console.log(friend1);
+  console.log(friend2);
+  console.log(friend3);
+  console.log(friend4);
+}
+
+function printFriendsStep3([friend1, friend2, friend3, friend4]) {
+  console.log(friend1);
+  console.log(friend2);
+  console.log(friend3);
+  console.log(friend4);
+}
+
+console.log(printFriendsStep1(["박한영", "김준수", "장하준", "이현종"]));
+console.log(printFriendsStep2(["박한영", "김준수", "장하준", "이현종"]));
+console.log(printFriendsStep3(["박한영", "김준수", "장하준", "이현종"]));
+
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 실습: 함수 매개변수 구조 분해 (Function Parameter Destructuring)
@@ -36,12 +125,91 @@ console.groupEnd()
 // 1. 상품명(title)과 가격(price)을 속성으로 가진 객체를 인자로 받는 printProduct 함수를 만드세요.
 // 2. 함수의 매개변수 자리에서 즉시 구조 분해를 수행하세요.
 // 3. 템플릿 리터럴을 사용하여 상품 정보를 출력해 보세요.
-console.groupCollapsed('함수 매개변수 구조 분해 실습')
+console.groupCollapsed("함수 매개변수 구조 분해 실습");
 
 // 이곳에 코드를 작성하세요
+{
+  const myCup = {
+    name: "머그컵",
+    color: "하얀색",
+    material: "사기(도자기)",
+    price: 7000,
+    // isPresent: false,
+  };
 
-console.groupEnd()
+  const yourCup = {};
 
+  // 만약 myCup 객체에 isPresent 속성이 없다면?
+  // isPresent 속성의 기본 값을 할당하자.
+  const {
+    name = "Mug Cup",
+    color = "민트색",
+    material = "플라스틱",
+    price = 3000,
+    isPresent = true,
+  } = yourCup; // myCup
+
+  console.log(name, color, material, price);
+  console.log(isPresent);
+  console.log(myCup);
+}
+
+{
+  function printInfoStep1(product) {
+    const name = product.name || "Mug Cup";
+    const color = product.color || "민트색";
+    const material = product.material || "플라스틱";
+    const price = product.price || 3000;
+    const isPresent = product.isPresent || true;
+
+    console.log("name =", name);
+    console.log("color =", color);
+    console.log("material =", material);
+    console.log("price =", price);
+    console.log("isPresent =", isPresent);
+
+    // 암묵적으로 undefined 반환
+    // return undefined
+  }
+
+  console.log(printInfoStep1(myCup));
+  console.log(
+    printInfoStep1({
+      color: "골드색",
+      price: 27000,
+    }),
+  );
+}
+
+function px2rem(pxValue, baseValue = 16) {
+  // 예전에 설정하던 매개변수 기본값 설정
+  // const baseNumberValue = parseFloat(baseValue || 16)
+  // ES6(ECMAScript 2015)에서 등장한 기본 매개변수 활용
+  const baseNumberValue = parseFloat(baseValue);
+  const pxNumberValue = parseFloat(pxValue);
+  const remValue = `${pxNumberValue / baseNumberValue}rem`;
+  return remValue;
+}
+
+// 테스트 코드
+console.log(px2rem(20)); // '1.25rem'
+console.log(px2rem("20px")); // '1.25rem'
+console.log(px2rem(20, 10)); // '2rem'
+console.log(px2rem("20px", "10px")); // '2rem'
+
+function rem2px(remValue, baseValue = 16) {
+  const remNumberValue = parseFloat(remValue);
+  const baseNumberValue = parseFloat(baseValue);
+  const pxValue = `${remNumberValue * baseNumberValue}px`;
+  return pxValue;
+}
+
+// 테스트 코드
+console.log(rem2px(2.475)); // '39.6px'
+console.log(rem2px("2.475rem")); // '39.6px'
+console.log(rem2px(3.145, 10)); // '31.45px'
+console.log(rem2px("3.145px", "10px")); // '31.45px'em'
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 핵심 요약!
