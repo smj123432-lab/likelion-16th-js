@@ -90,8 +90,8 @@ console.log(checkDiscount(70)); // true
 console.log(checkDiscount(30)); // false
 console.log(checkDiscount(15)); // true
 
-// 3번
 const double = (num) => num * 2;
+// 3번
 
 console.log(double(3));
 

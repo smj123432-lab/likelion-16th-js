@@ -8,18 +8,12 @@
   --deep-cyan-color: #0c7482;
   --deep-purple-color: #5237a4;
   --deep-orange-color: #ed9625;
-
+  
   --bg-color: light-dark(var(--white-color), var(--dark-navy-color));
   --text-color: light-dark(var(--dark-navy-color), var(--white-color));
 
-  --primary-color: light-dark(
-    var(--deep-purple-color),
-    var(--deep-yellow-color)
-  );
-  --secondary-color: light-dark(
-    var(--deep-cyan-color),
-    var(--deep-orange-color)
-  );
+  --primary-color: light-dark(var(--deep-purple-color), var(--deep-yellow-color));
+  --secondary-color: light-dark(var(--deep-cyan-color), var(--deep-orange-color));
 
   --surface-color: color-mix(in srgb, var(--text-color), transparent 97%);
   --surface-color-bold: color-mix(in srgb, var(--text-color), transparent 80%);
@@ -29,11 +23,7 @@ body {
   margin: 0;
   background: var(--bg-color);
   color: var(--text-color);
-  font:
-    1rem/1.5 "Spoqa Han Sans Neo",
-    ui-sans-serif,
-    system-ui,
-    sans-serif;
+  font: 1rem/1.5 "Spoqa Han Sans Neo", ui-sans-serif, system-ui, sans-serif;
 }
 
 .prose {
@@ -44,24 +34,16 @@ body {
   letter-spacing: -0.02em;
   color: var(--text-color);
 
-  & h1,
-  & h2,
-  & h3 {
+  & h1, & h2, & h3 {
     margin: 0;
     line-height: 1.2;
     font-weight: 400;
     color: var(--primary-color);
   }
 
-  & h1 {
-    font-size: 1.75rem;
-  }
-  & h2 {
-    font-size: 1.5rem;
-  }
-  & h3 {
-    font-size: 1.125rem;
-  }
+  & h1 { font-size: 1.75rem; }
+  & h2 { font-size: 1.5rem; }
+  & h3 { font-size: 1.125rem; }
 
   & p {
     margin-block: 1.25em;
@@ -106,7 +88,7 @@ body {
 
   & dfn {
     font-style: normal;
-
+    
     & abbr[title] {
       cursor: help;
       border-block-end: 1px dashed var(--primary-color);
@@ -140,9 +122,7 @@ body {
   background: linear-gradient(to bottom, #fff, #eee);
 }
 
-.spacer {
-  height: 400px;
-}
+.spacer { height: 400px; }
 
 #log {
   padding: 10px;
@@ -178,17 +158,10 @@ body {
   cursor: pointer;
   font-weight: bold;
   color: white;
-
-  &.button--primary {
-    background-color: #3b82f6;
-  }
-  &.button--danger {
-    background-color: #ef4444;
-  }
-  &:disabled {
-    cursor: not-allowed;
-    background-color: #ccc;
-  }
+  
+  &.button--primary { background-color: #3b82f6; }
+	&.button--danger { background-color: #ef4444; }
+	&:disabled { cursor: not-allowed; background-color: #ccc; }
 }
 
 .tracker-area {
@@ -201,12 +174,13 @@ body {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s;
-
+  
   &.active {
-    background-color: #e0f2fe;
-    border-color: #3b82f6;
-  }
+	  background-color: #e0f2fe;
+	  border-color: #3b82f6;
+	}
 }
+
 
 #coordinates {
   font-size: 1.5rem;
@@ -215,6 +189,7 @@ body {
   margin-top: 10px;
 }
 
+
 .sr-only {
   overflow: hidden;
   position: absolute;
@@ -228,32 +203,7 @@ body {
   caption& {
     position: static;
   }
-
-  &.focusable:focus {
-    overflow: initial;
-    position: static;
-    clip: auto;
-    clip-path: unset;
-    width: initial;
-    height: initial;
-    margin: initial;
-    white-space: initial;
-  }
-}
-.sr-only {
-  overflow: hidden;
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: circle(0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  white-space: nowrap;
-
-  caption& {
-    position: static;
-  }
-
+  
   &.focusable:focus {
     overflow: initial;
     position: static;
