@@ -8,7 +8,6 @@
 // 3. 인수를 하나만 넣었을 때와 두 개 모두 넣었을 때의 결과를 비교해 보세요.
 console.groupCollapsed("기본 매개변수 실습");
 
-// 이곳에 코드를 작성하세요
 function px2rem(pxValue, baseValue = 16) {
   // 예전에 설정하던 매개변수 기본값 설정
   // const baseNumberValue = parseFloat(baseValue || 16)
@@ -38,22 +37,98 @@ console.log(rem2px("2.475rem")); // '39.6px'
 console.log(rem2px(3.145, 10)); // '31.45px'
 console.log(rem2px("3.145px", "10px")); // '31.45px'
 
-function createUser(name, age, job, location, email, password) {
-  const createUser = {
-    name: name,
-    age: age,
-    job: job,
-    location: location,
-    email: email,
-    password: password,
-  };
-  return createUser;
+console.groupEnd();
+
+// --------------------------------------------------------------------------
+// 실습: 객체 매개변수 패턴 & 구조 분해 (Object Destructuring)
+// --------------------------------------------------------------------------
+
+// [실습] 구조 분해 할당과 기본값의 결합
+// 1. 사용자 정보를 출력하는 showProfile 함수를 만드세요.
+// 2. 매개변수 위치에서 직접 구조 분해({ name, role, theme })를 수행하세요.
+// 3. theme의 기본값은 'light', role의 기본값은 'guest'로 설정하세요.
+// 4. 함수 호출 시 빈 객체조차 전달하지 않을 상황을 대비해 매개변수 전체 기본값으로 빈 객체({})를 할당하세요.
+console.groupCollapsed("객체 매개변수 및 구조 분해 실습");
+
+// 단계 1. 사용자 정보를 포함하는 객체 생성 함수
+{
+  function createPremiumUser(name, age, job, location, email, password) {
+    // 사용자 생성 (객체 구조)
+    const createdUser = {
+      grade: "Premium",
+      name: name,
+      age: age,
+      job: job,
+      address: location,
+      email: email,
+      password: password,
+    };
+
+    return createdUser;
+  }
+
+  const userMin = createPremiumUser(
+    "박중민",
+    22,
+    "학생",
+    "대전시",
+    "jungmin@naver.com",
+    "jomkdi@31",
+  );
+  const userYoun = createPremiumUser(
+    "어수연",
+    31,
+    "행정복지사",
+    "이천시",
+    "suyoun@kakao.com",
+    "dkcisl!92",
+  );
+
+  console.log(userMin);
+  console.log(userYoun);
 }
-// 사용자 정보를 포함하는 객체 생성 함수
+
+// 단계 2. 사용자 정보를 포함하는 객체 생성 함수
+{
+  function createPremiumUser(userInfo) {
+    const premiumUser = {
+      grade: "Premium",
+      name: userInfo.name,
+      age: userInfo.age,
+      job: userInfo.job,
+      address: userInfo.location,
+      email: userInfo.email,
+      password: userInfo.password,
+    };
+
+    return premiumUser;
+  }
+
+  const userMin = createPremiumUser({
+    name: "박중민",
+    age: 22,
+    job: "학생",
+    location: "대전시",
+    email: "jungmin@naver.com",
+    password: "jomkdi@31",
+  });
+
+  const userYoun = createPremiumUser({
+    name: "어수연",
+    age: 31,
+    job: "행정복지사",
+    location: "이천시",
+    email: "suyoun@kakao.com",
+    password: "dkcisl!92",
+  });
+
+  console.log(userMin);
+  console.log(userYoun);
+}
 
 // 단계 3. 사용자 정보를 포함하는 객체 생성 함수
 {
-  function createPremiumUser(userInfo) {
+  function createPremiumUser(userInfo = {}) {
     // 매개변수(객체 타입) 구조 분해 할당
     const {
       name,
@@ -106,20 +181,73 @@ function createUser(name, age, job, location, email, password) {
   console.log(userHoon);
 }
 
-console.groupEnd();
+// 단계 4. 사용자 정보를 포함하는 객체 생성 함수
+{
+  // 매개변수(객체 타입) 구조 분해 할당
+  function createPremiumUser({
+    name,
+    age = 1,
+    job = "학생",
+    location: address = "서울시",
+    email = null,
+    password = null,
+  } = {}) {
+    return {
+      grade: "Premium",
+      name: name,
+      age: age,
+      job: job,
+      address: address,
+      email: email,
+      password: password,
+    };
+  }
 
-// --------------------------------------------------------------------------
-// 실습: 객체 매개변수 패턴 & 구조 분해 (Object Destructuring)
-// --------------------------------------------------------------------------
+  const userMin = createPremiumUser({
+    name: "박중민",
+    age: 22,
+    job: "학생",
+    location: "대전시",
+    email: "jungmin@naver.com",
+    password: "jomkdi@31",
+  });
 
-// [실습] 구조 분해 할당과 기본값의 결합
-// 1. 사용자 정보를 출력하는 showProfile 함수를 만드세요.
-// 2. 매개변수 위치에서 직접 구조 분해({ name, role, theme })를 수행하세요.
-// 3. theme의 기본값은 'light', role의 기본값은 'guest'로 설정하세요.
-// 4. 함수 호출 시 빈 객체조차 전달하지 않을 상황을 대비해 매개변수 전체 기본값으로 빈 객체({})를 할당하세요.
-console.groupCollapsed("객체 매개변수 및 구조 분해 실습");
+  const userYoun = createPremiumUser({
+    name: "어수연",
+    age: 31,
+    job: "행정복지사",
+    location: "이천시",
+    email: "suyoun@kakao.com",
+    password: "dkcisl!92",
+  });
 
-// 이곳에 코드를 작성하세요
+  const userHoon = createPremiumUser({
+    name: "최지훈",
+    age: 42,
+    job: "변호사",
+  });
+
+  console.log(userMin);
+  console.log(userYoun);
+  console.log(userHoon);
+}
+
+const person = "최재훈";
+const job = "프론트엔드 개발자";
+
+// 함수 이름(myTag)을 템플릿 리터럴 앞에 붙여서 실행합니다.
+const result = myTag`${job}${person}입니다`;
+console.log(result); // '프론트엔드 개발자, 최재훈입니다.'
+
+function myTag(strings, person, job) {
+  console.log(strings); // ['', '은 ', '입니다.']
+  console.log(person); // '최재훈'
+  console.log(job); // '프론트엔드 개발자'
+
+  // 순서를 바꾸거나 문자를 추가하여 반환
+  // strings.at(-1)은 배열의 마지막 요소 '입니다.'를 가져옵니다.
+  return `${job}, ${person}${strings}`;
+}
 
 console.groupEnd();
 
