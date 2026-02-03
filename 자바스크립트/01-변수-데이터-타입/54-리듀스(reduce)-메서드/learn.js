@@ -6,12 +6,55 @@
 // 1. const prices = [12000, 45000, 3200, 9900] 배열을 만드세요.
 // 2. reduce를 사용하여 모든 가격의 합계를 구하세요.
 // 3. 초기값을 0으로 설정하는 것을 잊지 마세요!
-console.groupCollapsed('1. 합계 구하기 실습')
+console.groupCollapsed("1. 합계 구하기 실습");
 
-// 이곳에 코드를 작성하세요
+const prices = [12_000, 45_000, 3200, 9900];
 
-console.groupEnd()
+// 배열의 요소들을 모두 합한 값 (최종 결과 값 = 누산된 값)
+// 총합 = 0 + 12000 + 45000 + 3200 + 9900
+console.log(prices);
 
+// for문 사용 예시
+{
+  let initialValue = 0;
+  let accumulator = initialValue;
+  for (let i = 0, l = prices.length; i < l; i++) {
+    const price = prices.at(i);
+    accumulator += price;
+  }
+
+  console.log(accumulator);
+}
+
+// for...of문 메서드 사용 예시
+{
+  let initialValue = 0;
+  let accumulator = initialValue;
+  for (const price of prices) {
+    accumulator += price;
+  }
+
+  console.log(accumulator);
+}
+
+// forEach() 메서드 사용 예시
+{
+  let initialValue = 0;
+  let accumulator = initialValue;
+  prices.forEach((price) => (accumulator += price));
+
+  console.log(accumulator);
+}
+
+// reduce() 메서드 사용 예시
+{
+  // 최종적으로 누산된 값을 구하는 함수(배열의 메서드)
+  const totalPrice = prices.reduce((acc, price) => (acc += price), 0);
+
+  console.log(totalPrice);
+  console.log(`${totalPrice.toLocaleString()}원`);
+}
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 실습: 배열 -> 객체 (데이터 그룹화/카운팅)
@@ -21,12 +64,11 @@ console.groupEnd()
 // 1. const votes = ['정민', '지훈', '정민', '혜진', '지훈', '정민'] 배열을 만드세요.
 // 2. reduce를 사용하여 { '이름': 득표수 } 형태의 객체를 만드세요.
 // 3. 논리 연산자(acc[cur] || 0)를 활용해 코드를 단축해 보세요.
-console.groupCollapsed('2. 개수 세기 실습')
+console.groupCollapsed("2. 개수 세기 실습");
 
 // 이곳에 코드를 작성하세요
 
-console.groupEnd()
-
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 실습: 배열 평탄화 (Flattening)
@@ -36,12 +78,11 @@ console.groupEnd()
 // 1. const data = [['A', 'B'], ['C', 'D'], ['E']] 2차원 배열을 만드세요.
 // 2. reduce와 전개 구문을 사용하여 ['A', 'B', 'C', 'D', 'E'] 배열로 만드세요.
 // 3. Array.prototype.flat() 결과와 비교해 보세요.
-console.groupCollapsed('3. 배열 평탄화 실습')
+console.groupCollapsed("3. 배열 평탄화 실습");
 
 // 이곳에 코드를 작성하세요
 
-console.groupEnd()
-
+console.groupEnd();
 
 // --------------------------------------------------------------------------
 // 핵심 요약!
