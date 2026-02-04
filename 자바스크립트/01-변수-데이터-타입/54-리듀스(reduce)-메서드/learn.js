@@ -66,7 +66,33 @@ console.groupEnd();
 // 3. 논리 연산자(acc[cur] || 0)를 활용해 코드를 단축해 보세요.
 console.groupCollapsed("2. 개수 세기 실습");
 
-// 이곳에 코드를 작성하세요
+{
+  const fruits = [
+    "바나나",
+    "애플",
+    "오렌지",
+    "애플",
+    "바나나",
+    "워터 멜론",
+    "오렌지",
+    "워터 멜론",
+    "바나나",
+    "참외",
+  ];
+
+  const result = {'워터멜론'}
+  for (let i = 0; fruits.length; i += 1){
+    const fruitName = fruits.at(i)
+
+    if (result[fruitName]) {
+      console.log(`${fruitName}동일한 키가 있어요`);
+    } else {
+      console.log('동일한 키가 있어요');
+    }
+  }
+
+  console.log(result);
+}
 
 console.groupEnd();
 
