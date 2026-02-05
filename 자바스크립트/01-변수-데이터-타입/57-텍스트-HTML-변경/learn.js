@@ -1,11 +1,55 @@
+/* eslint-disable no-unused-vars */
 // --------------------------------------------------------------------------
 // 실습: textContent & innerHTML
 // --------------------------------------------------------------------------
 
+const main = document.getElementById("main-content");
+const heading = main.querySelector("h1");
+
+// textContent 속성
+{
+  // 읽기
+  console.log(heading.textContent);
+
+  // 쓰기
+  heading.textContent =
+    "<em>글자가 기울어질까요?</em> 그대로 HTML이 출력될걸요?";
+
+  console.log(heading.textContent);
+}
+
+// innerHTML 속성
+{
+  // 읽기
+  console.log(heading.innerHTML);
+
+  // 쓰기
+  setTimeout(() => {
+    heading.innerHTML = `
+      <em>글자가 기울어질까요?</em> 
+      HTML 태그로 해석되므로 반영될걸요?
+    `;
+
+    console.log("내부 HTML:", heading.innerHTML);
+
+    // outerHTML 속성 읽기
+    console.log("외부 HTML:", heading.outerHTML);
+  }, 2000);
+
+  // outerHTML 속성 쓰기
+  setTimeout(() => {
+    heading.outerHTML = `
+      <strong role="heading" aria-level="1">
+        ${heading.innerHTML}
+      </strong>
+    `;
+  }, 4000);
+}
+
 // [실습 1] 오늘의 생활 수칙 (textContent)
 // 1. 아래 headlines 배열에서 무작위로 하나를 추출하세요.
 // 2. 버튼을 클릭하면 <h2>(또는 출력용 요소)의 텍스트가 변경되도록 작성하세요.
-console.groupCollapsed("1. textContent 실습");
+console.group("1. textContent 실습");
 
 const headlines = [
   "전자레인지에 금속 용기 사용 금지",
@@ -49,50 +93,35 @@ const headlines = [
   "공공장소에서는 이어폰 사용하기",
   "비상연락망은 가족끼리 공유",
 ];
+
 {
   const practice1 = document.getElementById("practice1");
   const display = practice1.querySelector(".headline-display");
+
+  // 이벤트 위임(Event Delegation)
   practice1.addEventListener("click", (e) => {
+    // 실제 이벤트가 발생한 대상을 포함해 가장 가까운 부모까지
+    // 거슬러 올라가 요소를 찾고, 요소가 없을 경우 null 반환
     const button = e.target.closest(".btn-change");
+    // 빠른 반환(조기 리턴: Early Return)
     if (!button) return;
 
+    // 랜덤 '오늘의 생활 수칙' 꺼내기
     const randomIndex = Math.floor(Math.random() * headlines.length);
     const randomContent = headlines.at(randomIndex);
-    console.log(randomContent);
 
+    // DOM 요소의 텍스트 콘텐츠 조작(update)
     display.textContent = randomContent;
   });
 }
 
-const main = document.querySelector("main");
-const h1 = main.querySelector("h1");
+console.groupEnd();
 
-// textContent
-{
-  console.log(h1.textContent);
-
-  h1.textContent = `<em>글자는 기울여 지는가</em> 그대로 출력이 되는가?`;
-}
-
-// innerHTML
-{
-  console.log(h1.innerHTML);
-
-  setTimeout(() => {
-    h1.innerHTML = `
-  <em>글자는 기울여 지는가</em>
-   그대로 출력이 되는가?
-   `;
-    console.log(h1.innerHTML);
-  }, 2000);
-
-  setTimeout(() => {
-    h1.outerHTML = `
-  <strong rol='heading' aria-level="1">
-  ${h1.innerHTML}
-  </strong>`;
-  }, 4000);
-}
+// --------------------------------------------------------------------------
+// [실습 2] 프로필 카드 렌더링 (innerHTML)
+// 1. 버튼을 클릭하면 지정된 <div> 내부에 프로필 카드 HTML을 렌더링하세요.
+// 2. 템플릿 리터럴을 활용하여 <h2>박상현</h2><p>프론트엔드 개발자</p> 구조를 만드세요.
+console.groupCollapsed("2. innerHTML 실습");
 
 {
   const practice2 = document.getElementById("practice2");
@@ -124,16 +153,6 @@ const h1 = main.querySelector("h1");
     `;
   }
 }
-
-console.groupEnd();
-
-// --------------------------------------------------------------------------
-// [실습 2] 프로필 카드 렌더링 (innerHTML)
-// 1. 버튼을 클릭하면 지정된 <div> 내부에 프로필 카드 HTML을 렌더링하세요.
-// 2. 템플릿 리터럴을 활용하여 <h2>박상현</h2><p>프론트엔드 개발자</p> 구조를 만드세요.
-console.groupCollapsed("2. innerHTML 실습");
-
-// 이곳에 코드를 작성하세요
 
 console.groupEnd();
 
