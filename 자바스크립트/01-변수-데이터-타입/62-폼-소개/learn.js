@@ -31,7 +31,16 @@ emailForm.addEventListener("submit", (e) => {
     const form = e.currentTarget;
     form.reset();
     // const emailValue = emailInput.value
+    {
+      const inputElement = {
+        value: "...",
+      };
 
+      // const value = inputElement.value
+      // 구조 분해 할당
+      const { value: anotherValue } = inputElement; // { value }
+      console.log(anotherValue);
+    }
     // 여기에 코드 작성
     // [미션 2] 사용자가 입력한 이메일 값을 가져오세요.
     // 여기에 코드 작성

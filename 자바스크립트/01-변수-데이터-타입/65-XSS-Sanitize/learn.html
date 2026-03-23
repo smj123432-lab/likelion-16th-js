@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>보안 실습: XSS 공격과 방어</title>
@@ -23,9 +22,13 @@
         <form id="xss-form">
           <div class="form-field">
             <label for="user-input">메시지 입력</label>
-            <input type="text" id="user-input" name="content"
+            <input
+              type="text"
+              id="user-input"
+              name="content"
               placeholder="<img src=x onerror=alert(1)> 등을 입력해 보세요"
-              style="width: 100%;" />
+              style="width: 100%"
+            />
           </div>
           <button type="submit">데이터 출력</button>
         </form>
@@ -52,12 +55,11 @@
         </div>
       </section>
 
-      <section class="link-protection" style="margin-top: 40px;">
+      <section class="link-protection" style="margin-top: 40px">
         <h2>3. URL 기반 XSS 방어</h2>
         <p>악성 링크(<code>javascript:alert(1)</code>) 생성 방어 테스트</p>
         <div id="link-area"></div>
       </section>
     </main>
   </body>
-
 </html>
